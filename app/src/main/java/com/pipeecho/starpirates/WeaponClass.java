@@ -25,12 +25,12 @@ public class WeaponClass {
     int StunDuration;
     int AutoClickLoadRate;
 
-    void UpdateStats() {
+    public void UpdateStats() {
         // Must be overridden in each sub-class
         // TODO Make sub-classes for each weapon
     }
 
-    String AutoIncrement() {
+    public String AutoIncrement() {
         // Increments the ClickAmount by AutoClickLoadRate and returns a string of
         // ("%d/%d", ClickAmount, ClicksPerClip)
         String Ratio = "0/0";
@@ -42,7 +42,7 @@ public class WeaponClass {
         return Ratio;
     }
 
-    String ManualIncrement() {
+    public String ManualIncrement() {
         // Increments the ClickAmount by 1 and returns a string of
         // ("%d/%d", ClickAmount, ClicksPerClip)
         String Ratio = "0/0";
@@ -54,7 +54,7 @@ public class WeaponClass {
         return Ratio;
     }
 
-    String GetRatio() {
+    public String GetRatio() {
         // Returns a string of ("%d/%d", ClickAmount, ClicksPerClip)
         String Ratio = "0/0";
 
@@ -63,7 +63,7 @@ public class WeaponClass {
         return Ratio;
     }
 
-    WeaponClassDataPacket DamageDealtOnClick() {
+    public WeaponClassDataPacket DamageDealtOnClick() {
         // Needs to return an integer of damage dealt, another integer of the stun duration and
         // then the string of the ratio
 

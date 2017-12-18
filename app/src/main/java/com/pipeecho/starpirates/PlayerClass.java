@@ -15,7 +15,7 @@ public class PlayerClass {
     WeaponClass Button1;
     WeaponClass Button2;
 
-    String TakeDamage(int Damage) {
+    public String TakeDamage(int Damage) {
         // Takes the damage in and reduces it by the armour
         // If the end value is a float, the value will be floored to the nearest integer
         // The value is then sutracted from CurrentHealth and the health ratio returned
@@ -25,7 +25,7 @@ public class PlayerClass {
         return Ratio;
     }
 
-    String ReturnHealthRatio() {
+    public String ReturnHealthRatio() {
         String Ratio = "0/0";
 
         return Ratio;
