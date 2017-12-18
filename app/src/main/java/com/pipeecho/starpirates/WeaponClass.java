@@ -63,11 +63,11 @@ public class WeaponClass {
         return Ratio;
     }
 
-    GameViewDataPacket DamageDealtOnClick() {
+    WeaponClassDataPacket DamageDealtOnClick() {
         // Needs to return an integer of damage dealt, another integer of the stun duration and
         // then the string of the ratio
 
-        GameViewDataPacket Packet = new GameViewDataPacket();
+        WeaponClassDataPacket Packet = new WeaponClassDataPacket();
 
         // TODO Calculate damage and populate packet
 

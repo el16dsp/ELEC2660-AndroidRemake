@@ -4,12 +4,12 @@ package com.pipeecho.starpirates;
  * Created by dspip on 2017-12-18.
  */
 
-public class GameViewDataPacket {
+public class WeaponClassDataPacket {
     int Damage;
     int Stun;
     String Ratio;
 
-    GameViewDataPacket() {
+    WeaponClassDataPacket() {
         // Each attribute must be overridden in the game
 
         // Sets each attribute to a placeholder one

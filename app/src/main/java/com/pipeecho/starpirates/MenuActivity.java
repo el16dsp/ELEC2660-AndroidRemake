@@ -14,6 +14,8 @@ public class MenuActivity extends AppCompatActivity {
 
         // Make array of strings
         String[] MenuItems = {"Play as Cutter", "Inspect Pistol", "Inspect Blowtorch"};
+        // TODO Make this list based on the classes in the data model
+        // TODO Have each list item have the correct segue to another activity
 
         // Get list view id
         ListView listView = (ListView) findViewById(R.id.MenuList);
