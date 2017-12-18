@@ -41,11 +41,42 @@ public class ObstacleClass {
         return Ability.ClickAmount;
     }
 
+    public int getMaxClicks() {
+        return Ability.ClicksPerClip;
+    }
+
+    public int getAutoClicks() {
+        return Ability.AutoClickLoadRate;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public String getRatio() {
+        String Ratio = "0/0";
+        // TODO Calculate ratio
+        return Ratio;
+    }
+
     public boolean IsStunned() {
         if (StunDuration > 0) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public String TakeDamage(int Damage, int Stun) {
+        // Takes integers of the damage (subtracted from current health) and the stun (sets the
+        // stun duration if the new value is higher)
+        // Returns a string of the health ratio
+        String Ratio = "0/0";
+        // TODO Deal with damage here
+        return Ratio;
     }
 }
