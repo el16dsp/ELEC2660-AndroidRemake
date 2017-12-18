@@ -14,10 +14,13 @@ public class MenuActivity extends AppCompatActivity {
 
         // Make array of strings
         String[] MenuItems = {"Play as Cutter", "Inspect Pistol", "Inspect Blowtorch"};
+
         // Get list view id
         ListView listView = (ListView) findViewById(R.id.MenuList);
+
         // Build adapter for the list view
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MenuItems);
+
         // Set adapter to listview
         listView.setAdapter(adapter);
     }
