@@ -12,70 +12,73 @@ public class DataModel {
 
     public DataModel() {
         // Constructs the playerclass array and fills it with data
+        // TODO Make the constructor
     }
 
     public String LoadData() {
         // Will load data and return values into the string StoredData
         StoredData = "";
 
-        // Load file and modify stuff
+        // TODO Load file and modify stuff
 
         return StoredData;
     }
 
-    void SaveData(int Class, int WeaponOffset, int NewLevel) {
+    public void SaveData(int Class, int WeaponOffset, int NewLevel) {
         // Will take the integer inputs of class and weaponoffset to pick the right spot to save
         // the new level in
+
+        // TODO Save data
     }
 
-    String GetClassName(int Class) {
+    public String GetClassName(int Class) {
         // Takes the desired class integer and returns the name of the class
         String Name = "placeholder";
 
-        // Do stuff here
+        // TODO Do stuff here
 
         return Name;
     }
 
-    String GetWeapon1Title(int Class) {
+    public String GetWeapon1Title(int Class) {
         // Takes the desired class integer and returns the name of the class' first weapon
         String Name = "placeholder";
 
-        // Do stuff here
+        // TODO Do stuff here
 
         return Name;
     }
 
-    String GetWeapon2Title(int Class) {
+    public String GetWeapon2Title(int Class) {
         // Takes the desired class integer and returns the name of the class' second weapon
         String Name = "placeholder";
 
-        // Do stuff here
+        // TODO Do stuff here
 
         return Name;
     }
 
-    int GetWeapon1Cost(int Class) {
+    public int GetWeapon1Cost(int Class) {
         // Takes the desired class integer and returns the cost of the first weapon's next upgrade
-
+        // TODO Find and return cost
         return 0;
     }
 
-    int GetWeapon2Cost(int Class) {
+    public int GetWeapon2Cost(int Class) {
         // Takes the desired class integer and returns the cost of the second weapon's next upgrade
-
+        // TODO Find and return cost
         return 0;
     }
 
-    int GetWeapon1Level(int Class) {
+    public int GetWeapon1Level(int Class) {
         // Takes the desired class integer and returns the current level of the first weapon
-
+        // TODO Find and return level
         return 0;
     }
 
-    int GetWeapon2Level(int Class) {
+    public int GetWeapon2Level(int Class) {
         // Takes the desired class integer and returns the current level of the second weapon
-
+        // TODO Find and return level
         return 0;
     }
 }

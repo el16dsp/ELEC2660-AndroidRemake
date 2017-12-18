@@ -21,13 +21,13 @@ public class PlayerClass {
         // The value is then sutracted from CurrentHealth and the health ratio returned
 
         String Ratio = ReturnHealthRatio();
-
+        // TODO Do damage
         return Ratio;
     }
 
     public String ReturnHealthRatio() {
         String Ratio = "0/0";
-
+        // TODO Make ratio calculator
         return Ratio;
     }
 }
