@@ -25,9 +25,27 @@ public class WeaponClass {
     int StunDuration;
     int AutoClickLoadRate;
 
-    public void UpdateStats() {
+    public void UpdateStats(int DesiredLevel) {
         // Must be overridden in each sub-class
         // TODO Make sub-classes for each weapon
+
+        // Archetype of method is below
+        Level = DesiredLevel;
+
+        // Display old stats
+        DisplayStats();
+
+        LevelsPerUpgrade = 1.0;
+
+        DamagePerClick = Level;
+        ClicksPerClip = Level;
+        StunDuration = Level;
+        AutoClickLoadRate = Level;
+
+        ClickAmount = ClicksPerClip;
+
+        // Display new stats
+        DisplayStats();
     }
 
     public String AutoIncrement() {
@@ -123,5 +141,12 @@ public class WeaponClass {
 
         System.out.println("WeaponClass DamageDealtOnClick returning values:");
         return Packet;
+    }
+
+    public void DisplayStats() {
+        System.out.println("Damage is " + DamagePerClick);
+        System.out.println("Click capacity is " + ClicksPerClip);
+        System.out.println("Stun duration is " + StunDuration);
+        System.out.println("Auto click rate is " + AutoClickLoadRate);
     }
 }

@@ -15,7 +15,7 @@ public class PlayerClass {
     WeaponClass Button1;
     WeaponClass Button2;
 
-    public PlayerClass() {
+    public void MakeClass(int Weapon1Level, int Weapon2Level) {
         // Blank constructor
         // Needs to be overwritten for each class
         Name = "placeholder";
@@ -25,6 +25,8 @@ public class PlayerClass {
         CurrentHealth = MaxHealth;
         Armour = 0;
 
+        // Make placeholder weapon
+        // This can be overridden by one of the weapons
         Button1.Type = "W";
 
         Button1.Name = "placeholder";
@@ -39,6 +41,8 @@ public class PlayerClass {
         Button1.StunDuration = 0;
         Button1.AutoClickLoadRate = 0;
 
+        // Make placeholder weapon
+        // This can be overridden by one of the weapons
         Button2.Type = "W";
 
         Button2.Name = "placeholder";
