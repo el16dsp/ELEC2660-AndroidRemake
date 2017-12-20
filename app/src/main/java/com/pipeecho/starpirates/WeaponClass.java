@@ -18,7 +18,7 @@ public class WeaponClass {
     String Description;
 
     int Level;
-    float LevelsPerUpgrade;
+    double LevelsPerUpgrade;
     int DamagePerClick;
     int ClicksPerClip;
     int ClickAmount;
