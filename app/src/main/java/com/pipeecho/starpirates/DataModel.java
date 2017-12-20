@@ -7,12 +7,19 @@ import java.lang.reflect.Array;
  */
 
 public class DataModel {
-    Array PlayerClassArray;
+    PlayerClass[] PlayerClassArray;
     String StoredData;
+    int NUMBER_OF_CLASSES = 1;
 
     public DataModel() {
         // Constructs the playerclass array and fills it with data
         // TODO Make the constructor
+        PlayerClassArray = new PlayerClass[NUMBER_OF_CLASSES];
+
+        PlayerClassArray[0] = new Player_Cutter();
+        PlayerClassArray[0].MakeClass(1, 1);
+
+        PlayerClassArray[0].Button1.DisplayStats();
     }
 
     public String LoadData() {

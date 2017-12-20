@@ -13,6 +13,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         // Make array of strings
+        DataModel Data = new DataModel();
         String[] MenuItems = {"Play as Cutter", "Inspect Pistol", "Inspect Blowtorch"};
         // TODO Make this list based on the classes in the data model
         // TODO Have each list item have the correct segue to another activity

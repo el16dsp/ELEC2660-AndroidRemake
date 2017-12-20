@@ -12,6 +12,7 @@ public class Weapon_Pistol extends WeaponClass {
         Level = DesiredLevel;
 
         // Display old stats
+        System.out.println("Old weapon stats:");
         DisplayStats();
 
         LevelsPerUpgrade = 1.2;
@@ -24,10 +25,12 @@ public class Weapon_Pistol extends WeaponClass {
         ClickAmount = ClicksPerClip;
 
         // Display new stats
+        System.out.println("New weapon stats:");
         DisplayStats();
     }
 
     public void MakeClass() {
+        System.out.println("Making pistol weapon class");
         Type = "W";
         Name = "Pistol";
         Image = "pistol";
