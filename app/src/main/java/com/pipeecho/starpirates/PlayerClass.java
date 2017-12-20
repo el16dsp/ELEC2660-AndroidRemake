@@ -65,8 +65,7 @@ public class PlayerClass {
     }
 
     public String ReturnHealthRatio() {
-        String Ratio = "0/0";
-        // TODO Make ratio calculator
+        String Ratio = CurrentHealth + "/" + MaxHealth;
         return Ratio;
     }
 }
