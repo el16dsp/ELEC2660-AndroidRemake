@@ -23,5 +23,9 @@ public class Player_Cutter extends PlayerClass {
         Button1.UpdateStats(Weapon1Level);
 
         // Weapon 2 - Blowtorch
+        Weapon_Blowtorch Button2 = new Weapon_Blowtorch();
+
+        Button2.MakeClass();
+        Button2.UpdateStats(Weapon2Level);
     }
 }
