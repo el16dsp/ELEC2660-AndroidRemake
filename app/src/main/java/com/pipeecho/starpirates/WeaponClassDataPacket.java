@@ -5,11 +5,11 @@ package com.pipeecho.starpirates;
  */
 
 public class WeaponClassDataPacket {
-    int Damage;
-    int Stun;
-    String Ratio;
+    public int Damage;
+    public int Stun;
+    public String Ratio;
 
-    WeaponClassDataPacket() {
+    public WeaponClassDataPacket() {
         // Each attribute must be overridden in the game
 
         // Sets each attribute to a placeholder one
