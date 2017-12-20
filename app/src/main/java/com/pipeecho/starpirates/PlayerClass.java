@@ -19,7 +19,7 @@ public class PlayerClass {
         // Blank constructor
         // Needs to be overwritten for each class
         Name = "placeholder";
-        ImageBasis = "placeholder.png";
+        ImageBasis = "placeholder";
 
         MaxHealth = 1;
         CurrentHealth = MaxHealth;
@@ -28,7 +28,7 @@ public class PlayerClass {
         Button1.Type = "W";
 
         Button1.Name = "placeholder";
-        Button1.Image = "placeholder.png";
+        Button1.Image = "placeholder";
         Button1.Description = "placeholder";
 
         Button1.Level = 0;
@@ -42,7 +42,7 @@ public class PlayerClass {
         Button2.Type = "W";
 
         Button2.Name = "placeholder";
-        Button2.Image = "placeholder.png";
+        Button2.Image = "placeholder";
         Button2.Description = "placeholder";
 
         Button2.Level = 0;
@@ -57,7 +57,7 @@ public class PlayerClass {
     public String TakeDamage(int Damage) {
         // Takes the damage in and reduces it by the armour
         // If the end value is a float, the value will be floored to the nearest integer
-        // The value is then sutracted from CurrentHealth and the health ratio returned
+        // The value is then subtracted from CurrentHealth and the health ratio returned
 
         String Ratio = ReturnHealthRatio();
         // TODO Do damage
