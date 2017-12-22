@@ -5,8 +5,6 @@ package com.pipeecho.starpirates;
  */
 
 public class Player_Cutter extends PlayerClass {
-
-
     @Override
     public void MakeClass(int Weapon1Level, int Weapon2Level) {
         // Class stuff
