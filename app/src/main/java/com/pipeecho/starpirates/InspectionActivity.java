@@ -3,6 +3,7 @@ package com.pipeecho.starpirates;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class InspectionActivity extends AppCompatActivity {
@@ -74,6 +75,10 @@ public class InspectionActivity extends AppCompatActivity {
         AutoClickRate = Data.GetAutoClickRate(ClassSelected, WeaponSelected);
         TextView AutoText = findViewById(R.id.AutoText);
         AutoText.setText(String.format("Adds %d to the capacity every turn", AutoClickRate));
-        // TODO Build inspection view for the images
+
+        String ImageName = Data.GetImageBasis(ClassSelected, WeaponSelected);
+        ImageView image = findViewById(R.id.WeaponImage);
+        // Following line is taken from https://stackoverflow.com/questions/13513953/how-to-set-image-in-imageview-in-android
+        image.setImageResource(getResources().getIdentifier(ImageName, "drawable", getPackageName()));
     }
 }

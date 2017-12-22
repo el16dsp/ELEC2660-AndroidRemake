@@ -125,10 +125,16 @@ public class DataModel {
 
     int GetWeaponLevel(int Class, int Index) {
         // Takes the desired class integer and returns the current level of the first weapon
-        // TODO Find and return level
         System.out.println("DataModel GetWeaponCost called with values " + Class + " and " + Index);
         int Level = PlayerClassArray[Class].GetWeaponLevel(Index);
         System.out.println("DataModel GetWeaponCost returning value " + Level);
         return Level;
+    }
+
+    String GetImageBasis(int Class, int Index) {
+        System.out.println("DataModel GetImageBasis called with values " + Class + " and " + Index);
+        String ImageBasis = PlayerClassArray[Class].GetImageBasis(Index);
+        System.out.println("DataModel GetImageBasis returning value " + ImageBasis);
+        return ImageBasis;
     }
 }

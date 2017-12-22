@@ -106,4 +106,11 @@ public class PlayerClass {
         System.out.println("PlayerClass GetWeaponUpgradesPerLevel returning value " + LevelsPerUpgrade);
         return LevelsPerUpgrade;
     }
+
+    String GetImageBasis(int Index) {
+        System.out.println("PlayerClass GetImageBasis called for value " + Index);
+        String ImageName = Weapons[Index].Image;
+        System.out.println("PlayerClass GetImageBasis returning value " + ImageName);
+        return ImageName;
+    }
 }
