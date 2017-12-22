@@ -1,7 +1,5 @@
 package com.pipeecho.starpirates;
 
-import java.lang.reflect.Array;
-
 /**
  * Created by dspiper on 2017-12-18.
  */
@@ -40,29 +38,38 @@ public class DataModel {
     }
 
     public String GetClassName(int Class) {
-        // Takes the desired class integer and returns the name of the class
+        // Takes the desired class integer and returns the name of the
+        System.out.println("DataModel GetClassName called");
         String Name = "placeholder";
 
         // TODO Do stuff here
+        Name = PlayerClassArray[Class].GetName();
 
+        System.out.println("DataModel GetClassName returning value " + Name);
         return Name;
     }
 
     public String GetWeapon1Title(int Class) {
         // Takes the desired class integer and returns the name of the class' first weapon
+        System.out.println("DataModel GetWeapon1Name called");
         String Name = "placeholder";
 
         // TODO Do stuff here
+        Name = PlayerClassArray[Class].GetWeapon1Name();
 
+        System.out.println("DataModel GetWeapon1Name returning value " + Name);
         return Name;
     }
 
     public String GetWeapon2Title(int Class) {
         // Takes the desired class integer and returns the name of the class' second weapon
+        System.out.println("DataModel GetWeapon2Name called");
         String Name = "placeholder";
 
         // TODO Do stuff here
+        Name = PlayerClassArray[Class].GetWeapon2Name();
 
+        System.out.println("DataModel GetWeapon2Name returning value " + Name);
         return Name;
     }
 

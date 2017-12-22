@@ -68,8 +68,30 @@ public class PlayerClass {
         return Ratio;
     }
 
-    public String ReturnHealthRatio() {
+    String ReturnHealthRatio() {
+        System.out.println("PlayerClass ReturnHealthRatio called");
         String Ratio = CurrentHealth + "/" + MaxHealth;
+        System.out.println("PlayerClass ReturnHealthRatio returning value " + Ratio);
         return Ratio;
+    }
+
+    String GetWeapon1Name() {
+        System.out.println("PlayerClass GetWeapon1Name called");
+        String Name = Button1.GetName();
+        System.out.println("PlayerClass GetWeapon1Name returning value " + Name);
+        return Name;
+    }
+
+    String GetWeapon2Name() {
+        System.out.println("PlayerClass GetWeapon2Name called");
+        String Name = Button2.GetName();
+        System.out.println("PlayerClass GetWeapon2Name returning value " + Name);
+        return Name;
+    }
+
+    String GetName() {
+        System.out.println("PlayerClass GetName called");
+        System.out.println("PlayerClass GetName returning value " + Name);
+        return Name;
     }
 }

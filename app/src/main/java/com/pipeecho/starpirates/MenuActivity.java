@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    //DataModel Data = new DataModel();
+    DataModel Data = new DataModel();
     int NumberOfClasses = 1;// = Data.NUMBER_OF_CLASSES;
 
     @Override
@@ -26,9 +26,9 @@ public class MenuActivity extends AppCompatActivity {
 
         // For each class in the DataModel, have a "Play as...", "Inspect 'name of button1'" and
         // "Inspect 'name of button2'"
-        MenuItems[0] = "Play as Cutter";// + Data.PlayerClassArray[0].Name;
-        MenuItems[1] = "Inspect Pistol";// + Data.PlayerClassArray[0].Button1.Name;
-        MenuItems[2] = "Inspect Blowtorch";// + Data.PlayerClassArray[0].Button2.Name;
+        MenuItems[0] = "Play as " + Data.GetClassName(0);
+        MenuItems[1] = "Inspect ";// + Data.GetWeapon1Title(0);
+        MenuItems[2] = "Inspect ";// + Data.GetWeapon2Title(0);
 
         System.out.println("Menu list strings named");
 

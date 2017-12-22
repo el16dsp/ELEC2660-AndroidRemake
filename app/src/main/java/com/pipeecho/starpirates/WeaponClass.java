@@ -94,7 +94,7 @@ public class WeaponClass {
         return Ratio;
     }
 
-    public String GetRatio() {
+    String GetRatio() {
         // Returns a string of ("%d/%d", ClickAmount, ClicksPerClip)
         System.out.println("WeaponClass getRatio called");
         String Ratio = ClickAmount + "/" + ClicksPerClip;
@@ -110,7 +110,7 @@ public class WeaponClass {
 
         WeaponClassDataPacket Packet = new WeaponClassDataPacket();
 
-        if ((Type == "W") && (ClickAmount > 0)) {
+        if ((Type.equals("W")) && (ClickAmount > 0)) {
             System.out.println("Firing weapon for damage " + DamagePerClick + " and stun " + StunDuration);
 
             // Remove one round from the weapon
@@ -119,13 +119,13 @@ public class WeaponClass {
             Packet.Damage = DamagePerClick;
             Packet.Stun = StunDuration;
             Packet.Ratio = GetRatio();
-        } else if (Type == "W") {
+        } else if (Type.equals("W")) {
             System.out.println("Cannot fire weapon");
             // Populate packet for ratio (don't need to add damage and stun as they default to zero)
             Packet.Ratio = GetRatio();
         }
 
-        if ((Type == "A") && (ClickAmount == ClicksPerClip)) {
+        if ((Type.equals("A")) && (ClickAmount == ClicksPerClip)) {
             System.out.println("Firing ability for damage " + DamagePerClick + " and stun " + StunDuration);
             // Remove all rounds from the weapon
             ClickAmount = 0;
@@ -133,7 +133,7 @@ public class WeaponClass {
             Packet.Damage = DamagePerClick;
             Packet.Stun = StunDuration;
             Packet.Ratio = GetRatio();
-        } else if (Type == "A") {
+        } else if (Type.equals("A")) {
             System.out.println("Cannot fire ability");
             // Populate packet for ratio (don't need to add damage and stun as they default to zero)
             Packet.Ratio = GetRatio();
@@ -143,10 +143,16 @@ public class WeaponClass {
         return Packet;
     }
 
-    public void DisplayStats() {
+    void DisplayStats() {
         System.out.println("Damage is " + DamagePerClick);
         System.out.println("Click capacity is " + ClicksPerClip);
         System.out.println("Stun duration is " + StunDuration);
         System.out.println("Auto click rate is " + AutoClickLoadRate);
+    }
+
+    String GetName() {
+        System.out.println("WeaponClass GetName called");
+        System.out.println("WeaponClass GetName returning value " + Name);
+        return Name;
     }
 }
