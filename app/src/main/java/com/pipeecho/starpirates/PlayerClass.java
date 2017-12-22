@@ -12,8 +12,7 @@ public class PlayerClass {
     int CurrentHealth;
     int Armour;
 
-    WeaponClass Button1;
-    WeaponClass Button2;
+    WeaponClass[] Weapons = new WeaponClass[2];
 
     public void MakeClass(int Weapon1Level, int Weapon2Level) {
         // Blank constructor
@@ -25,37 +24,8 @@ public class PlayerClass {
         CurrentHealth = MaxHealth;
         Armour = 0;
 
-        // Make placeholder weapon
-        // This can be overridden by one of the weapons
-        Button1.Type = "W";
-
-        Button1.Name = "placeholder";
-        Button1.Image = "placeholder";
-        Button1.Description = "placeholder";
-
-        Button1.Level = 0;
-        Button1.LevelsPerUpgrade = 1.0;
-        Button1.DamagePerClick = 0;
-        Button1.ClicksPerClip = 1;
-        Button1.ClickAmount = Button1.ClicksPerClip;
-        Button1.StunDuration = 0;
-        Button1.AutoClickLoadRate = 0;
-
-        // Make placeholder weapon
-        // This can be overridden by one of the weapons
-        Button2.Type = "W";
-
-        Button2.Name = "placeholder";
-        Button2.Image = "placeholder";
-        Button2.Description = "placeholder";
-
-        Button2.Level = 0;
-        Button2.LevelsPerUpgrade = 1.0;
-        Button2.DamagePerClick = 0;
-        Button2.ClicksPerClip = 1;
-        Button2.ClickAmount = Button1.ClicksPerClip;
-        Button2.StunDuration = 0;
-        Button2.AutoClickLoadRate = 0;
+        Weapons[0] = new WeaponClass();
+        Weapons[1] = new WeaponClass();
     }
 
     public String TakeDamage(int Damage) {
@@ -77,14 +47,14 @@ public class PlayerClass {
 
     String GetWeapon1Name() {
         System.out.println("PlayerClass GetWeapon1Name called");
-        String Name = Button1.GetName();
+        String Name = Weapons[0].GetName();
         System.out.println("PlayerClass GetWeapon1Name returning value " + Name);
         return Name;
     }
 
     String GetWeapon2Name() {
         System.out.println("PlayerClass GetWeapon2Name called");
-        String Name = Button2.GetName();
+        String Name = Weapons[1].GetName();
         System.out.println("PlayerClass GetWeapon2Name returning value " + Name);
         return Name;
     }

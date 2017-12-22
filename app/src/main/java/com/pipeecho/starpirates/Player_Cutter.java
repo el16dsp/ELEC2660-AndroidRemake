@@ -5,6 +5,8 @@ package com.pipeecho.starpirates;
  */
 
 public class Player_Cutter extends PlayerClass {
+
+
     @Override
     public void MakeClass(int Weapon1Level, int Weapon2Level) {
         // Class stuff
@@ -16,15 +18,11 @@ public class Player_Cutter extends PlayerClass {
         Armour = 0;
 
         // Weapon 1 - Pistol
-        Weapon_Pistol Button1 = new Weapon_Pistol();
-
-        Button1.MakeClass();
-        Button1.UpdateStats(Weapon1Level);
+        Weapons[0] = new Weapon_Pistol();
+        Weapons[0].UpdateStats(Weapon1Level);
 
         // Weapon 2 - Blowtorch
-        Weapon_Blowtorch Button2 = new Weapon_Blowtorch();
-
-        Button2.MakeClass();
-        Button2.UpdateStats(Weapon2Level);
+        Weapons[1] = new Weapon_Blowtorch();
+        Weapons[1].UpdateStats(Weapon2Level);
     }
 }

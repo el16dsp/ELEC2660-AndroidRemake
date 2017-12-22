@@ -17,8 +17,6 @@ public class DataModel {
         System.out.println("Making class 0");
         PlayerClassArray[0] = new Player_Cutter();
         PlayerClassArray[0].MakeClass(1, 1);
-        System.out.println("Displaying class 0 weapon stats");
-        PlayerClassArray[0].Button1.DisplayStats();
     }
 
     public String LoadData() {

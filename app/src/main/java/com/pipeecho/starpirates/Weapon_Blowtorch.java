@@ -27,7 +27,7 @@ public class Weapon_Blowtorch extends WeaponClass {
         DisplayStats();
     }
 
-    public void MakeClass() {
+    public Weapon_Blowtorch() {
         System.out.println("Making blowtorch weapon class");
         Type = "A";
         Name = "Blowtorch";

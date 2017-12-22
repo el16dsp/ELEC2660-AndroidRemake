@@ -29,7 +29,7 @@ public class Weapon_Pistol extends WeaponClass {
         DisplayStats();
     }
 
-    public void MakeClass() {
+    public Weapon_Pistol() {
         System.out.println("Making pistol weapon class");
         Type = "W";
         Name = "Pistol";

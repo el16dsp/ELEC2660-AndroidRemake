@@ -25,6 +25,13 @@ public class WeaponClass {
     int StunDuration;
     int AutoClickLoadRate;
 
+    public WeaponClass() {
+        Name = "placeholder";
+        Image = "placeholder";
+        Description = "placeholder";
+        UpdateStats(0);
+    }
+
     public void UpdateStats(int DesiredLevel) {
         // Must be overridden in each sub-class
         // TODO Make sub-classes for each weapon

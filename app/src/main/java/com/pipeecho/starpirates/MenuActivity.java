@@ -27,8 +27,8 @@ public class MenuActivity extends AppCompatActivity {
         // For each class in the DataModel, have a "Play as...", "Inspect 'name of button1'" and
         // "Inspect 'name of button2'"
         MenuItems[0] = "Play as " + Data.GetClassName(0);
-        MenuItems[1] = "Inspect ";// + Data.GetWeapon1Title(0);
-        MenuItems[2] = "Inspect ";// + Data.GetWeapon2Title(0);
+        MenuItems[1] = "Inspect " + Data.GetWeapon1Title(0);
+        MenuItems[2] = "Inspect " + Data.GetWeapon2Title(0);
 
         System.out.println("Menu list strings named");
 
