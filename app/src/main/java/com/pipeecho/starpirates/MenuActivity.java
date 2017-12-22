@@ -68,7 +68,6 @@ public class MenuActivity extends AppCompatActivity {
                         // TODO Have intent to game activity
                     } else {
                         System.out.println("Loading instruction view");
-                        // TODO Have intent to instruction activity
                         Intent InstructionIntent = new Intent(MenuActivity.this, InstructionActivity.class);
 
                         startActivity(InstructionIntent);
