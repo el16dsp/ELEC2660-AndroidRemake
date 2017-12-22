@@ -1,5 +1,6 @@
 package com.pipeecho.starpirates;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MenuActivity extends AppCompatActivity {
+
+    public static final String CHAR_SELECTED = "com.pipeecho.StarPirates.CHAR_SELECTED";
+    public static final String WEAPON_SELECTED = "com.pipeecho.StarPirates.WEAPON_SELECTED";
 
     DataModel Data = new DataModel();
     int NumberOfClasses = Data.NUMBER_OF_CLASSES;
@@ -66,11 +70,19 @@ public class MenuActivity extends AppCompatActivity {
                         System.out.println("Loading instruction view");
                         // TODO Have intent to instruction activity
                     }
+                    // End if of deciding if to play game or load instructions
                 } else {
                     System.out.println("Inspection view selected");
                     // TODO Have intent to inspection view
+                    Intent InspectionIntent = new Intent(MenuActivity.this, InspectionActivity.class);
+
+                    InspectionIntent.putExtra(CHAR_SELECTED, i/3);
+                    InspectionIntent.putExtra(WEAPON_SELECTED, (i%3)-1);
+
+                    MenuActivity.this.startActivity(InspectionIntent);
                 }
+                // End if of selecting inspection view or game
             }
-        });
+        }); // End of setting the listener
     }
 }
