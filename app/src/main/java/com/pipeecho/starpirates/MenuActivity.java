@@ -37,7 +37,7 @@ public class MenuActivity extends AppCompatActivity {
         // TODO Have each list item have the correct segue to another activity
 
         // Get list view id
-        ListView listView = (ListView) findViewById(R.id.MenuList);
+        ListView listView = findViewById(R.id.MenuList);
         System.out.println("List view found");
 
         // Build adapter for the list view
