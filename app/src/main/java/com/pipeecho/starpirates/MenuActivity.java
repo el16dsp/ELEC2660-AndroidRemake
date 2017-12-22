@@ -31,8 +31,8 @@ public class MenuActivity extends AppCompatActivity {
         // "Inspect 'name of button2'"
         for (int class_number = 0; class_number < NumberOfClasses; class_number++) {
             MenuItems[(3 * class_number) + 0] = "Play as " + Data.GetClassName(class_number);
-            MenuItems[(3 * class_number) + 1] = "Inspect " + Data.GetWeapon1Title(class_number);
-            MenuItems[(3 * class_number) + 2] = "Inspect " + Data.GetWeapon2Title(class_number);
+            MenuItems[(3 * class_number) + 1] = "Inspect " + Data.GetWeaponTitle(class_number, 0);
+            MenuItems[(3 * class_number) + 2] = "Inspect " + Data.GetWeaponTitle(class_number, 1);
         }
 
         System.out.println("Menu list strings named");

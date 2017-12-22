@@ -53,48 +53,35 @@ public class DataModel {
         return Name;
     }
 
-    public String GetWeapon1Title(int Class) {
+    public String GetWeaponTitle(int Class, int Index) {
         // Takes the desired class integer and returns the name of the class' first weapon
-        System.out.println("DataModel GetWeapon1Name called");
+        System.out.println("DataModel GetWeaponName called with values " + Class + " and " + Index);
         String Name = "placeholder";
 
-        Name = PlayerClassArray[Class].GetWeapon1Name();
+        Name = PlayerClassArray[Class].GetWeaponName(Index);
 
-        System.out.println("DataModel GetWeapon1Name returning value " + Name);
+        System.out.println("DataModel GetWeaponName returning value " + Name);
         return Name;
     }
 
-    public String GetWeapon2Title(int Class) {
-        // Takes the desired class integer and returns the name of the class' second weapon
-        System.out.println("DataModel GetWeapon2Name called");
-        String Name = "placeholder";
+    public String GetWeaponDescription(int Class, int Index) {
+        System.out.println("DataModel GetWeaponDescription called with values " + Class + " and " + Index);
+        String Description = "placeholder";
 
-        Name = PlayerClassArray[Class].GetWeapon2Name();
+        Description = PlayerClassArray[Class].GetWeaponDescription(Index);
 
-        System.out.println("DataModel GetWeapon2Name returning value " + Name);
-        return Name;
+        System.out.println("DataModel GetWeaponDescription returning value " + Description);
+        return Description;
     }
 
-    public int GetWeapon1Cost(int Class) {
+    public int GetWeaponCost(int Class, int Index) {
         // Takes the desired class integer and returns the cost of the first weapon's next upgrade
         // TODO Find and return cost
         return 0;
     }
 
-    public int GetWeapon2Cost(int Class) {
-        // Takes the desired class integer and returns the cost of the second weapon's next upgrade
-        // TODO Find and return cost
-        return 0;
-    }
-
-    public int GetWeapon1Level(int Class) {
+    public int GetWeaponLevel(int Class, int Index) {
         // Takes the desired class integer and returns the current level of the first weapon
-        // TODO Find and return level
-        return 0;
-    }
-
-    public int GetWeapon2Level(int Class) {
-        // Takes the desired class integer and returns the current level of the second weapon
         // TODO Find and return level
         return 0;
     }

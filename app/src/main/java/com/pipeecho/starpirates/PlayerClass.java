@@ -45,17 +45,10 @@ public class PlayerClass {
         return Ratio;
     }
 
-    String GetWeapon1Name() {
-        System.out.println("PlayerClass GetWeapon1Name called");
-        String Name = Weapons[0].GetName();
-        System.out.println("PlayerClass GetWeapon1Name returning value " + Name);
-        return Name;
-    }
-
-    String GetWeapon2Name() {
-        System.out.println("PlayerClass GetWeapon2Name called");
-        String Name = Weapons[1].GetName();
-        System.out.println("PlayerClass GetWeapon2Name returning value " + Name);
+    String GetWeaponName(int Index) {
+        System.out.println("PlayerClass GetWeaponName called");
+        String Name = Weapons[Index].GetName();
+        System.out.println("PlayerClass GetWeaponName returning value " + Name);
         return Name;
     }
 
@@ -63,5 +56,12 @@ public class PlayerClass {
         System.out.println("PlayerClass GetName called");
         System.out.println("PlayerClass GetName returning value " + Name);
         return Name;
+    }
+
+    String GetWeaponDescription(int Index) {
+        System.out.println("PlayerClass GetWeaponDescription called for value " + Index);
+        String Description = Weapons[Index].Description;
+        System.out.println("PlayerClass GetWeaponDescription returning value " + Description);
+        return Description;
     }
 }
