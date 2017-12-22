@@ -23,6 +23,8 @@ public class DataModel {
         PlayerClassArray[1] = new Player_MGunner();
         PlayerClassArray[1] .MakeClass(1, 1);
 
+        System.out.println("Classes made in DataModel");
+
     }
 
     public String LoadData() {
