@@ -15,10 +15,11 @@ public class DataModel {
         // Constructs the playerclass array and fills it with data
         // TODO Make the constructor
         PlayerClassArray = new PlayerClass[NUMBER_OF_CLASSES];
-
+        System.out.println("Made space for playerclasses");
+        System.out.println("Making class 0");
         PlayerClassArray[0] = new Player_Cutter();
         PlayerClassArray[0].MakeClass(1, 1);
-
+        System.out.println("Displaying class 0 weapon stats");
         PlayerClassArray[0].Button1.DisplayStats();
     }
 
