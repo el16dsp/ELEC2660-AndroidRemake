@@ -11,7 +11,6 @@ public class DataModel {
 
     public DataModel() {
         // Constructs the playerclass array and fills it with data
-        // TODO Make the constructor
         PlayerClassArray = new PlayerClass[NUMBER_OF_CLASSES];
         System.out.println("Made space for playerclasses");
 
@@ -48,7 +47,6 @@ public class DataModel {
         System.out.println("DataModel GetClassName called");
         String Name = "placeholder";
 
-        // TODO Do stuff here
         Name = PlayerClassArray[Class].GetName();
 
         System.out.println("DataModel GetClassName returning value " + Name);
@@ -60,7 +58,6 @@ public class DataModel {
         System.out.println("DataModel GetWeapon1Name called");
         String Name = "placeholder";
 
-        // TODO Do stuff here
         Name = PlayerClassArray[Class].GetWeapon1Name();
 
         System.out.println("DataModel GetWeapon1Name returning value " + Name);
@@ -72,7 +69,6 @@ public class DataModel {
         System.out.println("DataModel GetWeapon2Name called");
         String Name = "placeholder";
 
-        // TODO Do stuff here
         Name = PlayerClassArray[Class].GetWeapon2Name();
 
         System.out.println("DataModel GetWeapon2Name returning value " + Name);

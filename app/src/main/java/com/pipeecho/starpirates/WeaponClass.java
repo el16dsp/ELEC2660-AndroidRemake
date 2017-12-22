@@ -34,7 +34,6 @@ public class WeaponClass {
 
     public void UpdateStats(int DesiredLevel) {
         // Must be overridden in each sub-class
-        // TODO Make sub-classes for each weapon
 
         // Archetype of method is below
         Level = DesiredLevel;

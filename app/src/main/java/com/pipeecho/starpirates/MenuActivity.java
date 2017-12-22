@@ -2,6 +2,8 @@ package com.pipeecho.starpirates;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,9 +22,6 @@ public class MenuActivity extends AppCompatActivity {
         // Make array of strings
         String[] MenuItems = new String[(3 * NumberOfClasses) + 1];
         System.out.println("Menu list string space allocated");
-        // TODO Make this list based on the classes in the data model
-        // Need to figure out a way to load data in the background and not have heavy processing
-        // in this method
 
         // For each class in the DataModel, have a "Play as...", "Inspect 'name of button1'" and
         // "Inspect 'name of button2'"
@@ -36,7 +35,6 @@ public class MenuActivity extends AppCompatActivity {
 
         // Then have an instructions tab at the end
         MenuItems[(3 * NumberOfClasses)] = "Instructions";
-        // TODO Have each list item have the correct segue to another activity
 
         // Get list view id
         ListView listView = findViewById(R.id.MenuList);
@@ -49,5 +47,30 @@ public class MenuActivity extends AppCompatActivity {
         // Set adapter to listview
         listView.setAdapter(adapter);
         System.out.println("Menu list adapter allocated");
+
+        // Set the listview to be clickable and have each item go to the right activity
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("Pressed item " + i);
+                // If (item index 'i' % 3) = 0, player selected class or instructions view
+                // Else, load info view for inspection
+                if ((i % 3) == 0) {
+                    System.out.println("Play game selected or instruction view selected");
+                    // If (i / 3) is less than the number of classes, play game
+                    // Else load instruction view
+                    if ((i / 3) < NumberOfClasses) {
+                        System.out.println("Playing game as " + Data.GetClassName(i/3));
+                        // TODO Have intent to game activity
+                    } else {
+                        System.out.println("Loading instruction view");
+                        // TODO Have intent to instruction activity
+                    }
+                } else {
+                    System.out.println("Inspection view selected");
+                    // TODO Have intent to inspection view
+                }
+            }
+        });
     }
 }
