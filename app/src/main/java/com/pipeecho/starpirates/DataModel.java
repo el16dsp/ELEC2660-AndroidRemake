@@ -9,7 +9,7 @@ public class DataModel {
     String StoredData;
     int NUMBER_OF_CLASSES = 2;
 
-    public DataModel() {
+    DataModel() {
         // Constructs the playerclass array and fills it with data
         PlayerClassArray = new PlayerClass[NUMBER_OF_CLASSES];
         System.out.println("Made space for playerclasses");
@@ -42,7 +42,7 @@ public class DataModel {
         // TODO Save data
     }
 
-    public String GetClassName(int Class) {
+    String GetClassName(int Class) {
         // Takes the desired class integer and returns the name of the
         System.out.println("DataModel GetClassName called");
         String Name = "placeholder";
@@ -53,7 +53,7 @@ public class DataModel {
         return Name;
     }
 
-    public String GetWeaponTitle(int Class, int Index) {
+    String GetWeaponTitle(int Class, int Index) {
         // Takes the desired class integer and returns the name of the class' first weapon
         System.out.println("DataModel GetWeaponName called with values " + Class + " and " + Index);
         String Name = "placeholder";
@@ -64,7 +64,7 @@ public class DataModel {
         return Name;
     }
 
-    public String GetWeaponDescription(int Class, int Index) {
+    String GetWeaponDescription(int Class, int Index) {
         System.out.println("DataModel GetWeaponDescription called with values " + Class + " and " + Index);
         String Description = "placeholder";
 
@@ -74,15 +74,61 @@ public class DataModel {
         return Description;
     }
 
-    public int GetWeaponCost(int Class, int Index) {
-        // Takes the desired class integer and returns the cost of the first weapon's next upgrade
-        // TODO Find and return cost
-        return 0;
+    int GetClicksPerClip(int Class, int Index) {
+        System.out.println("DataModel GetClicksPerClip called with values " + Class + " and " + Index);
+
+        int ClicksPerClip = PlayerClassArray[Class].GetClicksPerClip(Index);
+
+        System.out.println("DataModel GetClicksPerClip returning value " + ClicksPerClip);
+        return ClicksPerClip;
     }
 
-    public int GetWeaponLevel(int Class, int Index) {
+    int GetStunDuration(int Class, int Index) {
+        System.out.println("DataModel GetStunDuration called with values " + Class + " and " + Index);
+
+        int StunDuration = PlayerClassArray[Class].GetStunDuration(Index);
+
+        System.out.println("DataModel GetStunDuration returning value " + StunDuration);
+        return StunDuration;
+    }
+
+    int GetAutoClickRate(int Class, int Index) {
+        System.out.println("DataModel GetAutoClickRate called with values " + Class + " and " + Index);
+
+        int AutoClickRate = PlayerClassArray[Class].GetAutoClickRate(Index);
+
+        System.out.println("DataModel GetAutoClickRate returning value " + AutoClickRate);
+        return AutoClickRate;
+    }
+
+    int GetWeaponDamage(int Class, int Index) {
+        System.out.println("DataModel GetWeaponDamage called with values " + Class + " and " + Index);
+        int Damage = PlayerClassArray[Class].GetWeaponDamage(Index);
+        System.out.println("DataModel GetWeaponDamage returning value " + Damage);
+        return Damage;
+    }
+
+    int GetWeaponCost(int Class, int Index) {
+        // Takes the desired class integer and returns the cost of the first weapon's next upgrade
+        System.out.println("DataModel GetWeaponCost called with values " + Class + " and " + Index);
+
+        // Taken from Objective-C: CostPrecise = (1.0 + 0.1 * NumberOfStatsAffectedByLevelling) *
+        // powf(10.0, 1 + ((1 + 0.1 * NumberOfStatsAffectedByLevelling) * CurrentLevel)/12);
+        int Level = GetWeaponLevel(Class, Index);
+        double UpgradesPerLevel = PlayerClassArray[Class].GetWeaponUpgradesPerLevel(Index);
+        double CostPrecise = (1.0 + 0.1 * UpgradesPerLevel) * Math.pow(10.0, 1.0 + ((1.0 + 0.1 * UpgradesPerLevel) * Level)/12);
+        int Cost = (int) CostPrecise;
+
+        System.out.println("DataModel GetWeaponCost returning value " + Cost);
+        return Cost;
+    }
+
+    int GetWeaponLevel(int Class, int Index) {
         // Takes the desired class integer and returns the current level of the first weapon
         // TODO Find and return level
-        return 0;
+        System.out.println("DataModel GetWeaponCost called with values " + Class + " and " + Index);
+        int Level = PlayerClassArray[Class].GetWeaponLevel(Index);
+        System.out.println("DataModel GetWeaponCost returning value " + Level);
+        return Level;
     }
 }

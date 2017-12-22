@@ -20,10 +20,10 @@ public class InspectionActivity extends AppCompatActivity {
         String WeaponDescription;
         int Level;
         int Cost;
-        String Damage;
-        String ClicksPerClip;
-        String StunDuration;
-        String AutoClickRate;
+        int Damage;
+        int ClicksPerClip;
+        int StunDuration;
+        int AutoClickRate;
 
         // Get the intent that started the activity
         Intent intent = getIntent();
@@ -59,6 +59,21 @@ public class InspectionActivity extends AppCompatActivity {
         TextView LevelText = findViewById(R.id.LevelText);
         LevelText.setText(String.format("Level: %d ", Level));
 
-        // TODO Build inspection view
+        Damage = Data.GetWeaponDamage(ClassSelected, WeaponSelected);
+        TextView DamageText = findViewById(R.id.DamageText);
+        DamageText.setText(String.format("Damage: %d", Damage));
+
+        ClicksPerClip = Data.GetClicksPerClip(ClassSelected, WeaponSelected);
+        TextView ClickText = findViewById(R.id.ClicksText);
+        ClickText.setText(String.format("Capacity: %d", ClicksPerClip));
+
+        StunDuration = Data.GetStunDuration(ClassSelected, WeaponSelected);
+        TextView StunText = findViewById(R.id.StunText);
+        StunText.setText(String.format("Stuns target for %d turns", StunDuration));
+
+        AutoClickRate = Data.GetAutoClickRate(ClassSelected, WeaponSelected);
+        TextView AutoText = findViewById(R.id.AutoText);
+        AutoText.setText(String.format("Adds %d to the capacity every turn", AutoClickRate));
+        // TODO Build inspection view for the images
     }
 }
