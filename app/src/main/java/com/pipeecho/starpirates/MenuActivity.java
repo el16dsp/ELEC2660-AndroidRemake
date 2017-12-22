@@ -69,11 +69,13 @@ public class MenuActivity extends AppCompatActivity {
                     } else {
                         System.out.println("Loading instruction view");
                         // TODO Have intent to instruction activity
+                        Intent InstructionIntent = new Intent(MenuActivity.this, InstructionActivity.class);
+
+                        startActivity(InstructionIntent);
                     }
                     // End if of deciding if to play game or load instructions
                 } else {
                     System.out.println("Inspection view selected");
-                    // TODO Have intent to inspection view
                     Intent InspectionIntent = new Intent(MenuActivity.this, InspectionActivity.class);
 
                     InspectionIntent.putExtra(CHAR_SELECTED, i/3);

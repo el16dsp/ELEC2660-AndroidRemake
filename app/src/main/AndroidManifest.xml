@@ -16,12 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InspectionActivity"
+        <activity
+            android:name=".InspectionActivity"
             android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuActivity"/>
+                android:value=".MenuActivity" />
         </activity>
+        <activity android:name=".InstructionActivity"></activity>
     </application>
 
 </manifest>
