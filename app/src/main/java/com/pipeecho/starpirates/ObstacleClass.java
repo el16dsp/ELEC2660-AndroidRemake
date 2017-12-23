@@ -19,7 +19,7 @@ public class ObstacleClass {
     int Reward;
     int StunDuration;
 
-    WeaponClass Ability;
+    WeaponClass Ability = new WeaponClass();
 
     public ObstacleClass(int DesiredLevel, String TypeName) {
 
@@ -29,6 +29,7 @@ public class ObstacleClass {
         Level = DesiredLevel;
         Random RandomNumber = new Random();
         if (TypeName == "chest_idle") {
+            System.out.println("Constructing chest idle");
 
             Name = "Chest";
             Image = "chest_idle.png";
@@ -44,6 +45,7 @@ public class ObstacleClass {
 
             System.out.println("Generated chest (idle) of level " + Level);
         } else if (TypeName == "chest_dead") {
+            System.out.println("Constructing chest dead");
 
             Name = "Chest";
             Image = "chest_dead.png";
@@ -59,6 +61,7 @@ public class ObstacleClass {
 
             System.out.println("Generated chest (dead) of level " + Level);
         } else if (TypeName == "door_idle") {
+            System.out.println("Constructing door idle");
 
             Name = "Door";
             Image = "door_idle.png";
@@ -74,6 +77,7 @@ public class ObstacleClass {
 
             System.out.println("Generated door (idle) of level " + Level);
         } else if (TypeName == "door_dead") {
+            System.out.println("Constructing door dead");
 
             Name = "Door";
             Image = "door_dead.png";
@@ -89,6 +93,8 @@ public class ObstacleClass {
 
             System.out.println("Generated door (dead) of level " + Level);
         } else {
+            System.out.println("Constructing enemy");
+
             Name = "Enemy";
             Image = "enemy_idle.png";
 

@@ -26,11 +26,18 @@ public class GameActivity extends AppCompatActivity {
 
     public void onButton1Click(View view) {
         // When button one pressed
+        System.out.println("GameActivity Button1 pressed");
         // TODO Connect view to game
     }
 
     public void onButton2Click(View view) {
         // When button two pressed
+        System.out.println("GameActivity Button2 pressed");
         // TODO Connect view to game
+    }
+
+    public void onOnstacleButton(View view) {
+        // When obstacle button pressed
+        System.out.println("GameActivity obstacle button pressed");
     }
 }

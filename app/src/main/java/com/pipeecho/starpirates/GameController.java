@@ -58,7 +58,7 @@ public class GameController {
         int Index = 0;
         while (Index < Encounters) {
             // Pick random number between 0 and ENCOUNTER_TOTAL_CHANCE
-            int RandomRoll = RandomNumber.nextInt() % ENCOUNTER_TOTAL_CHANCE;
+            int RandomRoll = Math.abs(RandomNumber.nextInt() % ENCOUNTER_TOTAL_CHANCE);
 
             // Decide whether obstacle is a chest, door or enemy
             if (RandomRoll <= ENCOUNTER_CHEST_CHANCE && Index != (Encounters - 1)) {
