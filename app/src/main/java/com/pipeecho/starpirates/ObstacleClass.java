@@ -186,8 +186,8 @@ public class ObstacleClass {
         System.out.println("Obstacle stunned for " + Data.Stun + " to " + StunDuration);
 
         // Deal with damage logic
-        System.out.println("Obstacle taking damage of " + Data.Stun + " from " + CurrentHealth + " to " + (CurrentHealth - Data.Stun));
-        CurrentHealth -= Data.Stun;
+        System.out.println("Obstacle taking damage of " + Data.Damage + " from " + CurrentHealth + " to " + (CurrentHealth - Data.Damage));
+        CurrentHealth -= Data.Damage;
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }

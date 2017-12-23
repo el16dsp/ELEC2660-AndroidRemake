@@ -39,7 +39,7 @@ public class WeaponClass {
         Level = DesiredLevel;
 
         // Display old stats
-        DisplayStats();
+        //DisplayStats();
 
         LevelsPerUpgrade = 1.0;
 
@@ -146,6 +146,9 @@ public class WeaponClass {
         }
 
         System.out.println("WeaponClass DamageDealtOnClick returning values:");
+        System.out.println("  Damage: " + Packet.Damage);
+        System.out.println("  Stun: " + Packet.Stun);
+        System.out.println("  Ratio: " + Packet.Ratio);
         return Packet;
     }
 
