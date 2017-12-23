@@ -7,7 +7,6 @@ import java.util.Random;
  */
 
 public class GameController {
-    // TODO Make game
     // Variables
     PlayerClass Player;
     DataModel Data;

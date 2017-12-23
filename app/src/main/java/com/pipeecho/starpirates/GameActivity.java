@@ -26,20 +26,19 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        // TODO Build game view
-
         Intent intent = getIntent();
         ClassSelected = intent.getIntExtra(MenuActivity.CHAR_SELECTED, 0);
-        System.out.println("Recieved class is " + ClassSelected);
 
         Game = new GameController(ClassSelected);
 
+        // Set button text to be that of the weapons.
         Button Button1 = findViewById(R.id.Button1);
         Button Button2 = findViewById(R.id.Button2);
         Button1.setText(Game.GetButtonText(0));
         Button2.setText(Game.GetButtonText(1));
 
-        // TODO Set texts, ratios and initial images
+        // TODO Weapon ratio colour blocks do not appear. Fix.
+        // Have frame 0 data prepared
         GameClassDataPacket Data = new GameClassDataPacket();
         Data.Button1Ratio = Game.Player.Weapons[0].GetRatio();
         Data.Button2Ratio = Game.Player.Weapons[1].GetRatio();
@@ -80,7 +79,6 @@ public class GameActivity extends AppCompatActivity {
         // Update health background label
         // Get Screen width
         // Taken from https://stackoverflow.com/questions/1016896/get-screen-dimensions-in-pixels
-        Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         int ScreenWidth = size.x;
         // Get TextView
@@ -116,7 +114,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Update turn label text
         TextView TurnLabel = findViewById(R.id.TurnLabel);
-        TurnLabel.setText(String.format("Turns: %04d", Data.Turns));
+        TurnLabel.setText(String.format("Turn: %04d", Data.Turns));
 
         // Update weapon 1 status label
         TextView Ratio1Label = findViewById(R.id.Weapon1Label);
@@ -192,7 +190,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void UpdateImages(GameClassDataPacket Data) {
-        System.out.println("UpdateImages called with images '" + Data.ObstacleImageTitle + "' and '" + Data.PlayerImageTitle + "'");
+        System.out.println("UpdateImages called with images '" + Data.ObstacleImageTitle +
+                "' and '" + Data.PlayerImageTitle + "'");
         // Update obstacle image
         ImageButton ObstacleImage = findViewById(R.id.ObstacleImage);
         ObstacleImage.setImageResource(getResources().getIdentifier(Data.ObstacleImageTitle,
