@@ -57,12 +57,12 @@ public class WeaponClass {
     public String AutoIncrement() {
         // Increments the ClickAmount by AutoClickLoadRate and returns a string of
         // ("%d/%d", ClickAmount, ClicksPerClip)
-        System.out.println("WeaponClass AutoIncrement called");
+        //System.out.println("WeaponClass AutoIncrement called");
         String Ratio;
 
         // Add one to the ClickAmount is it isn't at the maximum
         if (ClickAmount < ClicksPerClip) {
-            System.out.println("Old ClickAmount is " + ClickAmount);
+            //System.out.println("Old ClickAmount is " + ClickAmount);
             ClickAmount += AutoClickLoadRate;
 
             // If statement to stop click amount going beyond the maximum
@@ -70,9 +70,9 @@ public class WeaponClass {
                 ClickAmount = ClicksPerClip;
             }
 
-            System.out.println("New ClickAmount is " + ClickAmount);
+            //System.out.println("New ClickAmount is " + ClickAmount);
         } else {
-            System.out.println("ClickAmount maximum reached");
+            //System.out.println("ClickAmount maximum reached");
         }
 
         Ratio = GetRatio();
@@ -83,16 +83,16 @@ public class WeaponClass {
     public String ManualIncrement() {
         // Increments the ClickAmount by 1 and returns a string of
         // ("%d/%d", ClickAmount, ClicksPerClip)
-        System.out.println("WeaponClass ManualIncrement called");
+        //System.out.println("WeaponClass ManualIncrement called");
         String Ratio;
 
         // Add one to the ClickAmount is it isn't at the maximum
         if (ClickAmount < ClicksPerClip) {
-            System.out.println("Old ClickAmount is " + ClickAmount);
+            //System.out.println("Old ClickAmount is " + ClickAmount);
             ClickAmount += 1;
-            System.out.println("New ClickAmount is " + ClickAmount);
+            //System.out.println("New ClickAmount is " + ClickAmount);
         } else {
-            System.out.println("ClickAmount maximum reached");
+            //System.out.println("ClickAmount maximum reached");
         }
 
         Ratio = GetRatio();
@@ -102,9 +102,9 @@ public class WeaponClass {
 
     String GetRatio() {
         // Returns a string of ("%d/%d", ClickAmount, ClicksPerClip)
-        System.out.println("WeaponClass GetRatio called");
+        //System.out.println("WeaponClass GetRatio called");
         String Ratio = ClickAmount + "/" + ClicksPerClip;
-        System.out.println("WeaponClass GetRatio returning value " + Ratio);
+        //System.out.println("WeaponClass GetRatio returning value " + Ratio);
         return Ratio;
     }
 
@@ -112,7 +112,7 @@ public class WeaponClass {
         // Needs to return an integer of damage dealt, another integer of the stun duration and
         // then the string of the ratio
 
-        System.out.println("WeaponClass DamageDealtOnClick called");
+        //System.out.println("WeaponClass DamageDealtOnClick called");
 
         WeaponClassDataPacket Packet = new WeaponClassDataPacket();
 

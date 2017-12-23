@@ -29,18 +29,19 @@ public class GameController {
     public GameController(int Class) {
         Data = new DataModel();
         Player = Data.PlayerClassArray[Class];
+        System.out.println("Loaded player class " + Player.GetName());
 
         GenerateObstacleList();
     }
 
-    public ObstacleClass GetCurrentObstacle() {
-        System.out.println("GameController GetCurrentObstacle called");
+    ObstacleClass GetCurrentObstacle() {
+        //System.out.println("GameController GetCurrentObstacle called");
         ObstacleClass CurrentObstacle = ObstacleList[ObstacleIndex];
-        System.out.println("GameController GetCurrentObstacle returning obstacle " + CurrentObstacle);
+        //System.out.println("GameController GetCurrentObstacle returning obstacle " + CurrentObstacle);
         return CurrentObstacle;
     }
 
-    public int GenerateObstacleList() {
+    int GenerateObstacleList() {
         System.out.println("GameController GenerateObstacleList called");
 
         // Get random number generator
@@ -48,7 +49,7 @@ public class GameController {
         System.out.println("Random number generator initialised");
 
         // Get number of encounters and their levels
-        int Encounters = 1 + ((Turns + 1) % (ENCOUNTER_OFFSET + (Math.abs(RandomNumber.nextInt()) % ENCOUNTER_RANGE)));
+        int Encounters = 2 + ((Turns + 1) % (ENCOUNTER_OFFSET + (Math.abs(RandomNumber.nextInt()) % ENCOUNTER_RANGE)));
         int DesiredLevel = 1 + (Coins / (1 + (Math.abs(RandomNumber.nextInt()) % ENCOUNTER_LEVEL_RANGE)));
         System.out.println("Generating " + Encounters + " obstacles of level " + DesiredLevel);
 
@@ -60,9 +61,12 @@ public class GameController {
         while (Index < Encounters) {
             // Pick random number between 0 and ENCOUNTER_TOTAL_CHANCE
             int RandomRoll = Math.abs(RandomNumber.nextInt() % ENCOUNTER_TOTAL_CHANCE);
+            System.out.println("Index: " + Index + " Encounters: " + Encounters + " Roll: " + RandomRoll);
 
             // Decide whether obstacle is a chest, door or enemy
-            if (RandomRoll <= ENCOUNTER_CHEST_CHANCE && Index != (Encounters - 1)) {
+            int LastEncounter = Encounters - 2;
+            if (RandomRoll <= ENCOUNTER_CHEST_CHANCE && Index <= (LastEncounter - 2)) {
+                // If rolled for and not the last encounter...
                 System.out.println("Picked idle chest of level " + DesiredLevel + " in index " + Index);
                 System.out.println("Picked dead chest of level " + DesiredLevel + " in index " + (Index + 1));
 
@@ -75,7 +79,8 @@ public class GameController {
                 Index++;
                 ObstacleList[Index] = chest_dead;
                 Index++;
-            } else if (RandomRoll <= (ENCOUNTER_CHEST_CHANCE + ENCOUNTER_DOOR_CHANCE) || Index == (Encounters - 1)) {
+            } else if (RandomRoll <= (ENCOUNTER_CHEST_CHANCE + ENCOUNTER_DOOR_CHANCE) && (Index <= LastEncounter)) {
+                // If rolled for or is the last encounter...
                 System.out.println("Picked idle door of level " + DesiredLevel + " in index " + Index);
                 System.out.println("Picked dead door of level " + DesiredLevel + " in index " + (Index + 1));
 
@@ -106,7 +111,7 @@ public class GameController {
 
     int GetRatioNumerator(String Ratio) {
         // Turns a ratio such as "1/1" or "10/40" and gets the numerator as an integer
-        System.out.println("GameController GetRatioNumerator called with ratio " + Ratio);
+        // System.out.println("GameController GetRatioNumerator called with ratio " + Ratio);
 
         // Find "/"
         int SlashIndex = Ratio.indexOf("/");
@@ -116,24 +121,23 @@ public class GameController {
         // Taken from https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
         int IntNumerator = Integer.parseInt(Numerator);
 
-        System.out.println("GameController GetRatioNumerator returning value " + IntNumerator);
+        // System.out.println("GameController GetRatioNumerator returning value " + IntNumerator);
         return IntNumerator;
     }
 
     int GetRatioDenominator(String Ratio) {
         // Turns a ratio such as "1/1" or "10/40" and gets the denominator as an integer
-        System.out.println("GameController GetRatioDenominator called with ratio " + Ratio);
+        // System.out.println("GameController GetRatioDenominator called with ratio " + Ratio);
 
         // Find "/"
         int SlashIndex = Ratio.indexOf("/");
         // Get string of all chars before "/"
         String Denominator = Ratio.substring(SlashIndex + 1);
-        System.out.println("Denominator is " + Denominator);
         // Convert value to integer
         // Taken from https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
         int IntDenominator = Integer.parseInt(Denominator);
 
-        System.out.println("GameController GetRatioDenominator returning value " + IntDenominator);
+        // System.out.println("GameController GetRatioDenominator returning value " + IntDenominator);
         return IntDenominator;
     }
 
@@ -159,7 +163,9 @@ public class GameController {
         GameClassDataPacket Data = new GameClassDataPacket();
 
         ObstacleClass Obstacle = GetCurrentObstacle();
-        System.out.println(String.format("/// TURN %04d BEGIN \\\\\\", Turns));
+        System.out.println(String.format("/// TURN %04d BEGIN \\\\\\", Turns + 1));
+
+        Data.ObstacleImageTitle = Obstacle.Image;
 
         // Call obstacle weapon increment
         Obstacle.Ability.AutoIncrement();

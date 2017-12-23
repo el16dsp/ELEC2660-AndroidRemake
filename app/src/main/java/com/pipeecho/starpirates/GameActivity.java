@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -28,6 +30,7 @@ public class GameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ClassSelected = intent.getIntExtra(MenuActivity.CHAR_SELECTED, 0);
+        System.out.println("Recieved class is " + ClassSelected);
 
         Game = new GameController(ClassSelected);
 
@@ -189,9 +192,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void UpdateImages(GameClassDataPacket Data) {
+        System.out.println("UpdateImages called with images '" + Data.ObstacleImageTitle + "' and '" + Data.PlayerImageTitle + "'");
         // TODO Update obstacle image
+        ImageButton ObstacleImage = findViewById(R.id.ObstacleImage);
+        ObstacleImage.setImageResource(getResources().getIdentifier(Data.ObstacleImageTitle,
+                "drawable", getPackageName()));
 
         // TODO Update player image
+        ImageView PlayerImage = findViewById(R.id.PlayerImage);
+        PlayerImage.setImageResource(getResources().getIdentifier(Data.PlayerImageTitle,
+                "drawable", getPackageName()));
 
     }
 }

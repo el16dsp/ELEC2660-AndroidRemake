@@ -32,7 +32,7 @@ public class ObstacleClass {
             System.out.println("Constructing chest idle");
 
             Name = "Chest";
-            Image = "chest_idle.png";
+            Image = "chest_idle";
 
             MaxHealth = (6 + (RandomNumber.nextInt() % 5) ) * Level; // (6 to 10) times level
 
@@ -48,7 +48,7 @@ public class ObstacleClass {
             System.out.println("Constructing chest dead");
 
             Name = "Chest";
-            Image = "chest_dead.png";
+            Image = "chest_dead";
 
             MaxHealth = 1;
 
@@ -64,7 +64,7 @@ public class ObstacleClass {
             System.out.println("Constructing door idle");
 
             Name = "Door";
-            Image = "door_idle.png";
+            Image = "door_idle";
 
             MaxHealth = (6 + (RandomNumber.nextInt() % 5) ) * Level; // (6 to 10) * level
 
@@ -80,7 +80,7 @@ public class ObstacleClass {
             System.out.println("Constructing door dead");
 
             Name = "Door";
-            Image = "door_dead.png";
+            Image = "door_dead";
 
             MaxHealth = 1;
 
@@ -96,7 +96,7 @@ public class ObstacleClass {
             System.out.println("Constructing enemy");
 
             Name = "Enemy";
-            Image = "enemy_idle.png";
+            Image = "enemy_idle";
 
             MaxHealth = (6 + (RandomNumber.nextInt() % 5)) * Level; // (6 to 10) * level
 
@@ -126,44 +126,44 @@ public class ObstacleClass {
     }
 
     public int GetClickAmount() {
-        System.out.println("ObstacleClass GetClickAmount called");
-        System.out.println("ObstacleClass GetClickAmount returning value " + Ability.ClickAmount);
+        //System.out.println("ObstacleClass GetClickAmount called");
+        //System.out.println("ObstacleClass GetClickAmount returning value " + Ability.ClickAmount);
         return Ability.ClickAmount;
     }
 
     public int GetMaxClicks() {
-        System.out.println("ObstacleClass GetMaxClicks called");
-        System.out.println("ObstacleClass GetMaxClicks returning value " + Ability.ClicksPerClip);
+        //System.out.println("ObstacleClass GetMaxClicks called");
+        //System.out.println("ObstacleClass GetMaxClicks returning value " + Ability.ClicksPerClip);
         return Ability.ClicksPerClip;
     }
 
     public int GetAutoClicks() {
-        System.out.println("ObstacleClass GetAutoClicks called");
-        System.out.println("ObstacleClass GetAutoClicks returning value " + Ability.AutoClickLoadRate);
+        //System.out.println("ObstacleClass GetAutoClicks called");
+        //System.out.println("ObstacleClass GetAutoClicks returning value " + Ability.AutoClickLoadRate);
         return Ability.AutoClickLoadRate;
     }
 
     public String GetName() {
-        System.out.println("ObstacleClass GetName called");
-        System.out.println("ObstacleClass GetName returning value " + Name);
+        //System.out.println("ObstacleClass GetName called");
+        //System.out.println("ObstacleClass GetName returning value " + Name);
         return Name;
     }
 
     public String GetImage() {
-        System.out.println("ObstacleClass GetImage called");
-        System.out.println("ObstacleClass GetImage returning value " + Image);
+        //System.out.println("ObstacleClass GetImage called");
+        //System.out.println("ObstacleClass GetImage returning value " + Image);
         return Image;
     }
 
     public String GetRatio() {
-        System.out.println("ObstacleClass GetRatio called");
+        //System.out.println("ObstacleClass GetRatio called");
         String Ratio = CurrentHealth + "/" + MaxHealth;
-        System.out.println("ObstacleClass GetRatio returning value " + Ratio);
+        //System.out.println("ObstacleClass GetRatio returning value " + Ratio);
         return Ratio;
     }
 
     public boolean IsStunned() {
-        System.out.println("ObstacleClass IsStunned called");
+        //System.out.println("ObstacleClass IsStunned called");
         if (StunDuration > 0) {
             System.out.println("ObstacleClass IsStunned returning value true");
             return true;
