@@ -65,7 +65,11 @@ public class MenuActivity extends AppCompatActivity {
                     // Else load instruction view
                     if ((i / 3) < NumberOfClasses) {
                         System.out.println("Playing game as " + Data.GetClassName(i/3));
-                        // TODO Have intent to game activity
+                        Intent GameIntent = new Intent(MenuActivity.this, GameActivity.class);
+
+                        GameIntent.putExtra(CHAR_SELECTED, i/3);
+
+                        startActivity(GameIntent);
                     } else {
                         System.out.println("Loading instruction view");
                         Intent InstructionIntent = new Intent(MenuActivity.this, InstructionActivity.class);
