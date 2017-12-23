@@ -33,8 +33,14 @@ public class PlayerClass {
         // If the end value is a float, the value will be floored to the nearest integer
         // The value is then subtracted from CurrentHealth and the health ratio returned
 
+        // Take damage from health
+        CurrentHealth -= Damage;
+        if (CurrentHealth < 0) {
+            CurrentHealth = 0;
+        }
+        // Get ratio
         String Ratio = ReturnHealthRatio();
-        // TODO Do damage
+
         return Ratio;
     }
 
