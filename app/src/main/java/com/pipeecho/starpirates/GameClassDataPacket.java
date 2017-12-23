@@ -23,6 +23,6 @@ public class GameClassDataPacket {
         Coins = 0;
         Turns = 0;
         ObstacleImageTitle = "placeholder";
-
+        PlayerImageTitle = "placeholder";
     }
 }

@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
     int ClassSelected;
@@ -28,32 +31,39 @@ public class GameActivity extends AppCompatActivity {
 
         Game = new GameController(ClassSelected);
 
-        // TODO Change button text
+        Button Button1 = findViewById(R.id.Button1);
+        Button Button2 = findViewById(R.id.Button2);
+        Button1.setText(Game.GetButtonText(0));
+        Button2.setText(Game.GetButtonText(1));
     }
 
     public void onButton1Click(View view) {
         // When button one pressed
         System.out.println("GameActivity Button1 pressed");
-        // TODO Connect view to game
+        GameClassDataPacket Data = Game.OnButtonTick(0);
+        UpdateTextLabels(Data);
     }
 
     public void onButton2Click(View view) {
         // When button two pressed
         System.out.println("GameActivity Button2 pressed");
-        // TODO Connect view to game
+        GameClassDataPacket Data = Game.OnButtonTick(1);
+        UpdateTextLabels(Data);
     }
 
     public void onOnstacleButton(View view) {
         // When obstacle button pressed
         System.out.println("GameActivity obstacle button pressed");
+        GameClassDataPacket Data = Game.OnObstacleTick();
+        UpdateTextLabels(Data);
     }
 
-    public void UpdateTextLabels(GameClassDataPacket data) {
-        // TODO Update health label text
+    public void UpdateTextLabels(GameClassDataPacket Data) {
+        // Update health label text
         TextView HealthLabel = findViewById(R.id.HealthLabel);
-        HealthLabel.setText(data.HealthRatio);
+        HealthLabel.setText(Data.HealthRatio);
 
-        // TODO Update health background label
+        // Update health background label
         // Get Screen width
         // Taken from https://stackoverflow.com/questions/1016896/get-screen-dimensions-in-pixels
         Display display = getWindowManager().getDefaultDisplay();
@@ -62,9 +72,15 @@ public class GameActivity extends AppCompatActivity {
         // Get TextView
         TextView HealthBackground = findViewById(R.id.HealthBackground);
         // Get ratio denominator
-        int Denominator = Game.GetRatioDenominator(data.HealthRatio);
+        int Denominator = Game.GetRatioDenominator(Data.HealthRatio);
+        if (Denominator == 0) {
+            Denominator = 1;
+        }
         // Get ratio numerator
-        int Numerator = Game.GetRatioNumerator(data.HealthRatio);
+        int Numerator = Game.GetRatioNumerator(Data.HealthRatio);
+        if (Numerator == 0) {
+            Numerator = 1;
+        }
         // Turn ratio into floating point multiplier
         float Ratio = (float) Numerator / (float) Denominator;
         // Multiply screen width by multiplier
@@ -80,9 +96,13 @@ public class GameActivity extends AppCompatActivity {
             HealthBackground.setBackgroundColor(LABEL_GREEN);
         }
 
-        // TODO Update coin label text
+        // Update coin label text
+        TextView CoinLabel = findViewById(R.id.CoinLabel);
+        CoinLabel.setText(String.format("Coins: %04d",Data.Coins));
 
-        // TODO Update turn label text
+        // Update turn label text
+        TextView TurnLabel = findViewById(R.id.TurnLabel);
+        TurnLabel.setText(String.format("Turns: %04d", Data.Turns));
 
         // TODO Update weapon status labels
 

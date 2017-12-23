@@ -10,7 +10,7 @@ public class GameController {
     // TODO Make game
     // Variables
     PlayerClass Player;
-    DataModel Data = new DataModel();
+    DataModel Data;
     int Coins = 0;
     int Turns = 0;
     int ObstacleIndex = 0;
@@ -27,6 +27,7 @@ public class GameController {
     int ENCOUNTER_LEVEL_RANGE = 3;
 
     public GameController(int Class) {
+        Data = new DataModel();
         Player = Data.PlayerClassArray[Class];
 
         GenerateObstacleList();
@@ -133,6 +134,49 @@ public class GameController {
 
         System.out.println("GameController GetRatioDenominator returning value " + IntDenominator);
         return IntDenominator;
+    }
+
+    public String GetButtonText(int Weapon) {
+        // If weapon type is 'A', have "Charge..."
+        // If weapon type is 'W', have "Load..."
+        String Type = Player.Weapons[Weapon].Type;
+        String ButtonText = "placeholder";
+
+        // Get weapon name
+        String Name = Player.GetWeaponName(Weapon);
+
+        if (Type.equals("A")) {
+            ButtonText = "Charge " + Name;
+        } else if (Type.equals("W")) {
+            ButtonText = "Load " + Name;
+        }
+        return ButtonText;
+    }
+
+    public GameClassDataPacket OnAnyTick() {
+        GameClassDataPacket Data = new GameClassDataPacket();
+
+        // TODO Construct generic turn protocol
+
+        return Data;
+    }
+
+    public GameClassDataPacket OnObstacleTick() {
+        GameClassDataPacket Data;
+
+        // TODO Construct attack protocol
+        Data = OnAnyTick();
+
+        return Data;
+    }
+
+    public GameClassDataPacket OnButtonTick(int Weapon) {
+        GameClassDataPacket Data;
+
+        // TODO Construct load weapon protocol
+        Data = OnAnyTick();
+
+        return Data;
     }
 
 }
