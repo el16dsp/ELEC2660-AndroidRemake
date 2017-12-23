@@ -266,7 +266,7 @@ public class GameController {
             Data.Coins = Coins;
 
             // Get image of next obstacle
-            Data.ObstacleImageTitle = CurrentObstacle.GetImage();
+            Data.ObstacleImageTitle = ObstacleList[ObstacleIndex].GetImage();
         }
 
         // Pick player image
