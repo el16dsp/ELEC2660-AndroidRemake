@@ -28,7 +28,7 @@ public class PlayerClass {
         Weapons[1] = new WeaponClass();
     }
 
-    public String TakeDamage(int Damage) {
+    String TakeDamage(int Damage) {
         // Takes the damage in and reduces it by the armour
         // If the end value is a float, the value will be floored to the nearest integer
         // The value is then subtracted from CurrentHealth and the health ratio returned
@@ -37,7 +37,7 @@ public class PlayerClass {
         int DamageTaken = (int) (100.0 * Damage / (100.0 + Armour));
 
         // Take damage from health
-        CurrentHealth -= Damage;
+        CurrentHealth -= DamageTaken;
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }

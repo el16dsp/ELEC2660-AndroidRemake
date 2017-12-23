@@ -173,21 +173,21 @@ public class ObstacleClass {
         }
     }
 
-    public String TakeDamage(int Damage, int Stun) {
+    public String TakeDamage(WeaponClassDataPacket Data) {
         // Takes integers of the damage (subtracted from current health) and the stun (sets the
         // stun duration if the new value is higher)
         // Returns a string of the health ratio
 
         // Deal with stun logic
-        System.out.println("Obstacle stunned for " + StunDuration);
-        if (StunDuration < Stun) {
-            StunDuration = Stun;
+        System.out.println("Obstacle stunned for " + Data.Stun);
+        if (StunDuration < Data.Stun) {
+            StunDuration = Data.Stun;
         }
-        System.out.println("Obstacle stunned for " + Stun + " to " + StunDuration);
+        System.out.println("Obstacle stunned for " + Data.Stun + " to " + StunDuration);
 
         // Deal with damage logic
-        System.out.println("Obstacle taking damage of " + Damage + " from " + CurrentHealth + " to " + (CurrentHealth - Damage));
-        CurrentHealth -= Damage;
+        System.out.println("Obstacle taking damage of " + Data.Stun + " from " + CurrentHealth + " to " + (CurrentHealth - Data.Stun));
+        CurrentHealth -= Data.Stun;
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }

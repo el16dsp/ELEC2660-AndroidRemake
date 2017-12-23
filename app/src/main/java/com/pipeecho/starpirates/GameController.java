@@ -154,7 +154,7 @@ public class GameController {
     }
 
     public GameClassDataPacket OnAnyTick() {
-        /// Generic turn protocol
+        // Generic turn protocol
         GameClassDataPacket Data = new GameClassDataPacket();
 
         ObstacleClass Obstacle = GetCurrentObstacle();
@@ -222,18 +222,85 @@ public class GameController {
 
     public GameClassDataPacket OnObstacleTick() {
         GameClassDataPacket Data;
+        WeaponClassDataPacket Attack = new WeaponClassDataPacket();
 
-        // TODO Construct attack protocol
         Data = OnAnyTick();
+
+        // Call weapon 1 damage
+        WeaponClassDataPacket Button1Attack = Player.Weapons[0].DamageDealtOnClick();
+        Data.Button1Ratio = Button1Attack.Ratio;
+
+        // Call weapon 2 damage
+        WeaponClassDataPacket Button2Attack = Player.Weapons[1].DamageDealtOnClick();
+        Data.Button2Ratio = Button2Attack.Ratio;
+
+        // Process individual attacks and combine to one
+        Attack.Damage = Button1Attack.Damage + Button2Attack.Damage;
+        if (Button1Attack.Stun > Button2Attack.Stun) {
+            Attack.Stun = Button1Attack.Stun;
+        } else {
+            Attack.Stun = Button2Attack.Stun;
+        }
+
+        // Apply attack to Obstacle
+        String ObstacleHealthRatio = GetCurrentObstacle().TakeDamage(Attack);
+        int ObstacleHealthNumerator = GetRatioNumerator(ObstacleHealthRatio);
+        if (ObstacleHealthNumerator == 0) {
+            // Obstacle is dead
+            ObstacleIndex += 1;
+            if (ObstacleIndex >= ObstacleList.length) {
+                // If no more obstacles in the room, generate a new room
+                GenerateObstacleList();
+                ObstacleIndex = 0;
+            }
+            // Add reward
+            Coins += GetCurrentObstacle().Reward;
+            Data.Coins = Coins;
+
+            // Get image of next obstacle
+            Data.ObstacleImageTitle = GetCurrentObstacle().GetImage();
+        }
+
+        // Pick player image
+        boolean IfWeapon1Fired = (Button1Attack.Damage > 0 || Button1Attack.Stun > 0);
+        boolean IfWeapon2Fired = (Button2Attack.Damage > 0 || Button2Attack.Stun > 0);
+        if (IfWeapon1Fired && IfWeapon2Fired) {
+            Data.PlayerImageTitle = Player.ImageBasis + "_fire_12";
+        } else if (IfWeapon1Fired) {
+            Data.PlayerImageTitle = Player.ImageBasis + "_fire_1";
+        } else if (IfWeapon2Fired) {
+            Data.PlayerImageTitle = Player.ImageBasis + "_fire_2";
+        } else {
+            Data.PlayerImageTitle = Player.ImageBasis + "_idle";
+        } // Loading an individual weapon is done in the corresponding methods
+
+        Data = OnEndTick(Data);
 
         return Data;
     }
 
-    public GameClassDataPacket OnButtonTick(int Weapon) {
+    GameClassDataPacket OnButtonTick(int Weapon) {
         GameClassDataPacket Data;
 
-        // TODO Construct load weapon protocol
         Data = OnAnyTick();
+
+        // TODO Construct load weapon protocol
+
+        Data = OnEndTick(Data);
+
+        return Data;
+    }
+
+    GameClassDataPacket OnEndTick(GameClassDataPacket Data) {
+        Data.Turns += 1;
+        System.out.println(String.format("/// TURN %04d END \\\\\\", Data.Turns));
+
+        // Resolve player damage here
+        if (Player.CurrentHealth <= 0) {
+            System.out.println("Player is dead");
+            // Open up the shop
+            // TODO Make shop and intent to it
+        }
 
         return Data;
     }
