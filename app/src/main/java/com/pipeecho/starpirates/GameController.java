@@ -104,7 +104,7 @@ public class GameController {
         return Encounters;
     }
 
-    public int GetRatioNumerator(String Ratio) {
+    int GetRatioNumerator(String Ratio) {
         // Turns a ratio such as "1/1" or "10/40" and gets the numerator as an integer
         System.out.println("GameController GetRatioNumerator called with ratio " + Ratio);
 
@@ -120,7 +120,7 @@ public class GameController {
         return IntNumerator;
     }
 
-    public int GetRatioDenominator(String Ratio) {
+    int GetRatioDenominator(String Ratio) {
         // Turns a ratio such as "1/1" or "10/40" and gets the denominator as an integer
         System.out.println("GameController GetRatioDenominator called with ratio " + Ratio);
 
@@ -136,7 +136,7 @@ public class GameController {
         return IntDenominator;
     }
 
-    public String GetButtonText(int Weapon) {
+    String GetButtonText(int Weapon) {
         // If weapon type is 'A', have "Charge..."
         // If weapon type is 'W', have "Load..."
         String Type = Player.Weapons[Weapon].Type;
@@ -153,7 +153,7 @@ public class GameController {
         return ButtonText;
     }
 
-    public GameClassDataPacket OnAnyTick() {
+    GameClassDataPacket OnAnyTick() {
         // Generic turn protocol
         GameClassDataPacket Data = new GameClassDataPacket();
 
@@ -169,7 +169,7 @@ public class GameController {
 
         // Obstacle attack logic
         // If obstacle is stunned or not an enemy, it can't attack
-        if (Obstacle.IsStunned() == false && Obstacle.GetName().equals("enemy")) {
+        if (!Obstacle.IsStunned() && Obstacle.GetName().equals("enemy")) {
             System.out.println("Enemy is not stunned");
 
             // Fetch obstacle weapon ratio
@@ -220,7 +220,7 @@ public class GameController {
         return Data;
     }
 
-    public GameClassDataPacket OnObstacleTick() {
+    GameClassDataPacket OnObstacleTick() {
         GameClassDataPacket Data;
         WeaponClassDataPacket Attack = new WeaponClassDataPacket();
 
@@ -284,7 +284,11 @@ public class GameController {
 
         Data = OnAnyTick();
 
-        // TODO Construct load weapon protocol
+        // Increment the player's weapon and save the new ratio
+        Data.Button1Ratio = Player.Weapons[Weapon].ManualIncrement();
+
+        // Fetch the player's image
+        Data.PlayerImageTitle = Player.ImageBasis + "_load_" + (Weapon + 1);
 
         Data = OnEndTick(Data);
 
