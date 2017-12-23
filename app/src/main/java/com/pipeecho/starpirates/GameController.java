@@ -154,9 +154,68 @@ public class GameController {
     }
 
     public GameClassDataPacket OnAnyTick() {
+        /// Generic turn protocol
         GameClassDataPacket Data = new GameClassDataPacket();
 
-        // TODO Construct generic turn protocol
+        ObstacleClass Obstacle = GetCurrentObstacle();
+        System.out.println(String.format("/// TURN %04d BEGIN \\\\\\", Turns));
+
+        // Call obstacle weapon increment
+        Obstacle.Ability.AutoIncrement();
+
+        // Call auto-increment for player weapons
+        Player.Weapons[0].AutoIncrement();
+        Player.Weapons[1].AutoIncrement();
+
+        // Obstacle attack logic
+        // If obstacle is stunned or not an enemy, it can't attack
+        if (Obstacle.IsStunned() == false && Obstacle.GetName().equals("enemy")) {
+            System.out.println("Enemy is not stunned");
+
+            // Fetch obstacle weapon ratio
+            String ObstacleWeaponRatio = Obstacle.Ability.GetRatio();
+            int Denominator = GetRatioDenominator(ObstacleWeaponRatio);
+            int Numerator = GetRatioNumerator(ObstacleWeaponRatio);
+            if (Denominator == 0) {
+                Denominator = 1;
+            }
+            if (Numerator == 0) {
+                Numerator = 1;
+            }
+
+            if (Numerator == Denominator) {
+                // If obstacle amount is full, fire
+
+                WeaponClassDataPacket Damage = Obstacle.Ability.DamageDealtOnClick();
+                // Since there are no mechanics for the player to be stunned, only the damage
+                // is cared about
+                System.out.println("Obstacle attacks for " + Damage.Damage + " damage");
+
+                // Apply damage to the player
+                Data.HealthRatio = Player.TakeDamage(Damage.Damage);
+            }
+        }
+
+        // If obstacle is an enemy, select it's image
+        if (Obstacle.GetName().equals("enemy")) {
+            // If obstacle will be stunned during next turn, set image to stunned
+            // If obstacle is 1 auto-click away ie. will fire next turn, set image to attack
+            // If obstacle is 2 auto-clicks away, set image to pre-attack
+            // Else, be idle
+            if (Obstacle.StunDuration > 1) {
+                Data.ObstacleImageTitle = "enemy_stunned";
+            } else if (Obstacle.GetClickAmount() == (Obstacle.GetMaxClicks() - (2 * Obstacle.GetAutoClicks()))) {
+                Data.ObstacleImageTitle = "enemy_pre_attack";
+            } else if (Obstacle.GetClickAmount() == (Obstacle.GetMaxClicks() - Obstacle.GetAutoClicks())) {
+                Data.ObstacleImageTitle = "enemy_attack";
+            } else {
+                Data.ObstacleImageTitle = "enemy_idle";
+            }
+        }
+
+        // Change data values
+        Data.Coins = Coins;
+        Data.Turns = Turns;
 
         return Data;
     }

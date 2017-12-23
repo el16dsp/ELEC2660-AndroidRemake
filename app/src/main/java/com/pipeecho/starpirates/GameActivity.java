@@ -104,9 +104,17 @@ public class GameActivity extends AppCompatActivity {
         TextView TurnLabel = findViewById(R.id.TurnLabel);
         TurnLabel.setText(String.format("Turns: %04d", Data.Turns));
 
-        // TODO Update weapon status labels
+        // Update weapon 1 status label
+        TextView Ratio1Label = findViewById(R.id.Weapon1Label);
+        Ratio1Label.setText(Data.Button1Ratio);
 
-        // TODO Update weapon status backgrounds
+        // TODO Update weapon 1 status background
+
+        // Update weapon 2 status label
+        TextView Ratio2Label = findViewById(R.id.Weapon2Label);
+        Ratio2Label.setText(Data.Button2Ratio);
+
+        // TODO Update weapon 2 status background
 
     }
 

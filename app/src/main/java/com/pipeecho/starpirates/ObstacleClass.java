@@ -116,49 +116,49 @@ public class ObstacleClass {
         CurrentHealth = MaxHealth;
     }
 
-    public int getCurrentHealth() {
-        System.out.println("ObstacleClass getCurrentHealth called");
+    public int GetCurrentHealth() {
+        System.out.println("ObstacleClass GetCurrentHealth called");
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }
-        System.out.println("ObstacleClass getCurrentHealth returning value " + CurrentHealth);
+        System.out.println("ObstacleClass GetCurrentHealth returning value " + CurrentHealth);
         return CurrentHealth;
     }
 
-    public int getClickAmount() {
-        System.out.println("ObstacleClass getClickAmount called");
-        System.out.println("ObstacleClass getClickAmount returning value " + Ability.ClickAmount);
+    public int GetClickAmount() {
+        System.out.println("ObstacleClass GetClickAmount called");
+        System.out.println("ObstacleClass GetClickAmount returning value " + Ability.ClickAmount);
         return Ability.ClickAmount;
     }
 
-    public int getMaxClicks() {
-        System.out.println("ObstacleClass getMaxClicks called");
-        System.out.println("ObstacleClass getMaxClicks returning value " + Ability.ClicksPerClip);
+    public int GetMaxClicks() {
+        System.out.println("ObstacleClass GetMaxClicks called");
+        System.out.println("ObstacleClass GetMaxClicks returning value " + Ability.ClicksPerClip);
         return Ability.ClicksPerClip;
     }
 
-    public int getAutoClicks() {
-        System.out.println("ObstacleClass getAutoClicks called");
-        System.out.println("ObstacleClass getAutoClicks returning value " + Ability.AutoClickLoadRate);
+    public int GetAutoClicks() {
+        System.out.println("ObstacleClass GetAutoClicks called");
+        System.out.println("ObstacleClass GetAutoClicks returning value " + Ability.AutoClickLoadRate);
         return Ability.AutoClickLoadRate;
     }
 
-    public String getName() {
-        System.out.println("ObstacleClass getName called");
-        System.out.println("ObstacleClass getName returning value " + Name);
+    public String GetName() {
+        System.out.println("ObstacleClass GetName called");
+        System.out.println("ObstacleClass GetName returning value " + Name);
         return Name;
     }
 
-    public String getImage() {
-        System.out.println("ObstacleClass getImage called");
-        System.out.println("ObstacleClass getImage returning value " + Image);
+    public String GetImage() {
+        System.out.println("ObstacleClass GetImage called");
+        System.out.println("ObstacleClass GetImage returning value " + Image);
         return Image;
     }
 
-    public String getRatio() {
-        System.out.println("ObstacleClass getRatio called");
+    public String GetRatio() {
+        System.out.println("ObstacleClass GetRatio called");
         String Ratio = CurrentHealth + "/" + MaxHealth;
-        System.out.println("ObstacleClass getRatio returning value " + Ratio);
+        System.out.println("ObstacleClass GetRatio returning value " + Ratio);
         return Ratio;
     }
 
@@ -191,7 +191,7 @@ public class ObstacleClass {
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }
-        String Ratio = getRatio();
+        String Ratio = GetRatio();
         System.out.println("Obstacle health is " + Ratio);
 
         return Ratio;

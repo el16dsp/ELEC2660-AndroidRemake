@@ -102,9 +102,9 @@ public class WeaponClass {
 
     String GetRatio() {
         // Returns a string of ("%d/%d", ClickAmount, ClicksPerClip)
-        System.out.println("WeaponClass getRatio called");
+        System.out.println("WeaponClass GetRatio called");
         String Ratio = ClickAmount + "/" + ClicksPerClip;
-        System.out.println("WeaponClass getRatio returning value " + Ratio);
+        System.out.println("WeaponClass GetRatio returning value " + Ratio);
         return Ratio;
     }
 
