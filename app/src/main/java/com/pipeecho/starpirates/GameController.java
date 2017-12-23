@@ -59,6 +59,7 @@ public class GameController {
         // Add obstacles to the array
         int Index = 0;
         while (Index < Encounters) {
+            // TODO This still causes the app to crash. Fix.
             // Pick random number between 0 and ENCOUNTER_TOTAL_CHANCE
             int RandomRoll = Math.abs(RandomNumber.nextInt() % ENCOUNTER_TOTAL_CHANCE);
             System.out.println("Index: " + Index + " Encounters: " + Encounters + " Roll: " + RandomRoll);
@@ -176,6 +177,7 @@ public class GameController {
 
         // Obstacle attack logic
         // If obstacle is stunned or not an enemy, it can't attack
+        // TODO Obstacle doesn't attack player. Fix.
         if (!Obstacle.IsStunned() && Obstacle.GetName().equals("enemy")) {
             System.out.println("Enemy is not stunned");
 

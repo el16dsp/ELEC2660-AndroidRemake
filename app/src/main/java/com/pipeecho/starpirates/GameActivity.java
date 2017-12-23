@@ -193,12 +193,12 @@ public class GameActivity extends AppCompatActivity {
 
     public void UpdateImages(GameClassDataPacket Data) {
         System.out.println("UpdateImages called with images '" + Data.ObstacleImageTitle + "' and '" + Data.PlayerImageTitle + "'");
-        // TODO Update obstacle image
+        // Update obstacle image
         ImageButton ObstacleImage = findViewById(R.id.ObstacleImage);
         ObstacleImage.setImageResource(getResources().getIdentifier(Data.ObstacleImageTitle,
                 "drawable", getPackageName()));
 
-        // TODO Update player image
+        // Update player image
         ImageView PlayerImage = findViewById(R.id.PlayerImage);
         PlayerImage.setImageResource(getResources().getIdentifier(Data.PlayerImageTitle,
                 "drawable", getPackageName()));
