@@ -29,7 +29,7 @@ public class GameController {
     public GameController(int Class) {
         Player = Data.PlayerClassArray[Class];
 
-        GenerateObstacaleList();
+        GenerateObstacleList();
     }
 
     public ObstacleClass GetCurrentObstacle() {
@@ -39,7 +39,7 @@ public class GameController {
         return CurrentObstacle;
     }
 
-    public int GenerateObstacaleList() {
+    public int GenerateObstacleList() {
         System.out.println("GameController GenerateObstacleList called");
 
         // Get random number generator
@@ -102,4 +102,37 @@ public class GameController {
         System.out.println("GameController GenerateObstacleList returning number of encounters: " + Encounters);
         return Encounters;
     }
+
+    public int GetRatioNumerator(String Ratio) {
+        // Turns a ratio such as "1/1" or "10/40" and gets the numerator as an integer
+        System.out.println("GameController GetRatioNumerator called with ratio " + Ratio);
+
+        // Find "/"
+        int SlashIndex = Ratio.indexOf("/");
+        // Get string of all chars before "/"
+        String Numerator = Ratio.substring(0, SlashIndex);
+        // Convert value to integer
+        // Taken from https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
+        int IntNumerator = Integer.parseInt(Numerator);
+
+        System.out.println("GameController GetRatioNumerator returning value " + IntNumerator);
+        return IntNumerator;
+    }
+
+    public int GetRatioDenominator(String Ratio) {
+        // Turns a ratio such as "1/1" or "10/40" and gets the denominator as an integer
+        System.out.println("GameController GetRatioDenominator called with ratio " + Ratio);
+
+        // Find "/"
+        int SlashIndex = Ratio.indexOf("/");
+        // Get string of all chars before "/"
+        String Denominator = Ratio.substring(SlashIndex);
+        // Convert value to integer
+        // Taken from https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
+        int IntDenominator = Integer.parseInt(Denominator);
+
+        System.out.println("GameController GetRatioDenominator returning value " + IntDenominator);
+        return IntDenominator;
+    }
+
 }
