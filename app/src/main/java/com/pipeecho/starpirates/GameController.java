@@ -48,8 +48,8 @@ public class GameController {
         System.out.println("Random number generator initialised");
 
         // Get number of encounters and their levels
-        int Encounters = 1 + ((Turns + 1) % (ENCOUNTER_OFFSET + (RandomNumber.nextInt() % ENCOUNTER_RANGE)));
-        int DesiredLevel = 1 + (Coins / (1 + (RandomNumber.nextInt() % ENCOUNTER_LEVEL_RANGE)));
+        int Encounters = 1 + ((Turns + 1) % (ENCOUNTER_OFFSET + (Math.abs(RandomNumber.nextInt()) % ENCOUNTER_RANGE)));
+        int DesiredLevel = 1 + (Coins / (1 + (Math.abs(RandomNumber.nextInt()) % ENCOUNTER_LEVEL_RANGE)));
         System.out.println("Generating " + Encounters + " obstacles of level " + DesiredLevel);
 
         // Set array's size to that of encounters
@@ -127,7 +127,8 @@ public class GameController {
         // Find "/"
         int SlashIndex = Ratio.indexOf("/");
         // Get string of all chars before "/"
-        String Denominator = Ratio.substring(SlashIndex);
+        String Denominator = Ratio.substring(SlashIndex + 1);
+        System.out.println("Denominator is " + Denominator);
         // Convert value to integer
         // Taken from https://stackoverflow.com/questions/5585779/how-to-convert-a-string-to-an-int-in-java
         int IntDenominator = Integer.parseInt(Denominator);
@@ -243,7 +244,8 @@ public class GameController {
         }
 
         // Apply attack to Obstacle
-        String ObstacleHealthRatio = GetCurrentObstacle().TakeDamage(Attack);
+        ObstacleClass CurrentObstacle = GetCurrentObstacle();
+        String ObstacleHealthRatio = CurrentObstacle.TakeDamage(Attack);
         int ObstacleHealthNumerator = GetRatioNumerator(ObstacleHealthRatio);
         if (ObstacleHealthNumerator == 0) {
             // Obstacle is dead
@@ -254,11 +256,11 @@ public class GameController {
                 ObstacleIndex = 0;
             }
             // Add reward
-            Coins += GetCurrentObstacle().Reward;
+            Coins += CurrentObstacle.Reward;
             Data.Coins = Coins;
 
             // Get image of next obstacle
-            Data.ObstacleImageTitle = GetCurrentObstacle().GetImage();
+            Data.ObstacleImageTitle = CurrentObstacle.GetImage();
         }
 
         // Pick player image
@@ -285,7 +287,13 @@ public class GameController {
         Data = OnAnyTick();
 
         // Increment the player's weapon and save the new ratio
-        Data.Button1Ratio = Player.Weapons[Weapon].ManualIncrement();
+        if (Weapon == 0) {
+            Data.Button1Ratio = Player.Weapons[0].ManualIncrement();
+            Data.Button2Ratio = Player.Weapons[1].GetRatio();
+        } else if (Weapon == 1) {
+            Data.Button1Ratio = Player.Weapons[0].GetRatio();
+            Data.Button2Ratio = Player.Weapons[1].ManualIncrement();
+        }
 
         // Fetch the player's image
         Data.PlayerImageTitle = Player.ImageBasis + "_load_" + (Weapon + 1);
@@ -296,7 +304,8 @@ public class GameController {
     }
 
     GameClassDataPacket OnEndTick(GameClassDataPacket Data) {
-        Data.Turns += 1;
+        Turns += 1;
+        Data.Turns = Turns;
         System.out.println(String.format("/// TURN %04d END \\\\\\", Data.Turns));
 
         // Resolve player damage here
@@ -304,6 +313,8 @@ public class GameController {
             System.out.println("Player is dead");
             // Open up the shop
             // TODO Make shop and intent to it
+        } else {
+            Data.HealthRatio = Player.ReturnHealthRatio();
         }
 
         return Data;

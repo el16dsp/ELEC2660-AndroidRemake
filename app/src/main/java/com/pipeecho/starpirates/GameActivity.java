@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
         UpdateTextLabels(Data);
     }
 
-    public void onOnstacleButton(View view) {
+    public void onObstacleButton(View view) {
         // When obstacle button pressed
         System.out.println("GameActivity obstacle button pressed");
         GameClassDataPacket Data = Game.OnObstacleTick();

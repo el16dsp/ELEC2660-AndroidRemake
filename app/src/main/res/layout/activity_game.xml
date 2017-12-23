@@ -49,7 +49,7 @@
         android:layout_marginTop="50dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
-        android:onClick="onOnstacleButton"
+        android:onClick="onObstacleButton"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/Weapon1Label"
         app:layout_constraintEnd_toEndOf="parent"
