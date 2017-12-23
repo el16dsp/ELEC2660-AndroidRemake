@@ -24,11 +24,11 @@ public class ObstacleClass {
     public ObstacleClass(int DesiredLevel, String TypeName) {
 
         // The constructor for the obstacles
-        // Valid obstacle names are "chest", "chest_dead", "door", "door_dead", "enemy"
+        // Valid obstacle names are "chest_idle", "chest_dead", "door_idle", "door_dead", "enemy"
 
         Level = DesiredLevel;
         Random RandomNumber = new Random();
-        if (TypeName == "chest") {
+        if (TypeName == "chest_idle") {
 
             Name = "Chest";
             Image = "chest_idle.png";
@@ -58,7 +58,7 @@ public class ObstacleClass {
             Ability.Type = "A";
 
             System.out.println("Generated chest (dead) of level " + Level);
-        } else if (TypeName == "door") {
+        } else if (TypeName == "door_idle") {
 
             Name = "Door";
             Image = "door_idle.png";
