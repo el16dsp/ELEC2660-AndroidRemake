@@ -39,6 +39,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Button1" />
 
+    <ImageButton
+        android:id="@+id/ObstacleImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:onClick="onOnstacleButton"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/Weapon1Label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CoinLabel"
+        app:srcCompat="@drawable/chest_idle" />
+
+    <ImageView
+        android:id="@+id/PlayerImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/Weapon1Label"
+        app:layout_constraintEnd_toStartOf="@+id/Button2"
+        app:layout_constraintStart_toStartOf="@+id/Background"
+        app:srcCompat="@drawable/cutter_idle" />
+
     <TextView
         android:id="@+id/HealthBackground"
         android:layout_width="wrap_content"
@@ -84,6 +113,15 @@
         app:layout_constraintTop_toBottomOf="@+id/HealthLabel" />
 
     <TextView
+        android:id="@+id/Weapon1Background"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/Weapon1Label"
+        app:layout_constraintStart_toStartOf="@+id/Weapon1Label"
+        app:layout_constraintTop_toTopOf="@+id/Weapon1Label" />
+
+    <TextView
         android:id="@+id/Weapon1Label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -93,6 +131,15 @@
         app:layout_constraintBottom_toTopOf="@+id/Button1"
         app:layout_constraintEnd_toStartOf="@+id/Button2"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Weapon2Background"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/Weapon2Label"
+        app:layout_constraintEnd_toEndOf="@+id/Weapon2Label"
+        app:layout_constraintTop_toTopOf="@+id/Weapon2Label" />
 
     <TextView
         android:id="@+id/Weapon2Label"
