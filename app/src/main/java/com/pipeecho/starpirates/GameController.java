@@ -58,7 +58,6 @@ public class GameController {
         // Add obstacles to the array
         int Index = 0;
         while (Index < Encounters) {
-            // TODO This still causes the app to crash. Fix.
             // Pick random number between 0 and ENCOUNTER_TOTAL_CHANCE
             int RandomRoll = Math.abs(RandomNumber.nextInt() % ENCOUNTER_TOTAL_CHANCE);
             System.out.println("Index: " + Index + " Encounters: " + Encounters + " Roll: " + RandomRoll);
