@@ -50,7 +50,7 @@ public class PlayerClass {
     String ReturnHealthRatio() {
         //System.out.println("PlayerClass ReturnHealthRatio called");
         String Ratio = CurrentHealth + "/" + MaxHealth;
-        //System.out.println("PlayerClass ReturnHealthRatio returning value " + Ratio);
+        System.out.println("PlayerClass ReturnHealthRatio returning value " + Ratio);
         return Ratio;
     }
 

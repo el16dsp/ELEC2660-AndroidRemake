@@ -34,7 +34,7 @@ public class ObstacleClass {
             Name = "Chest";
             Image = "chest_idle";
 
-            MaxHealth = (6 + (RandomNumber.nextInt() % 5) ) * Level; // (6 to 10) times level
+            MaxHealth = (6 + (Math.abs(RandomNumber.nextInt()) % 5) ) * Level; // (6 to 10) times level
 
             Armour = 0;
             Reward = 0;
@@ -53,7 +53,7 @@ public class ObstacleClass {
             MaxHealth = 1;
 
             Armour = 0;
-            Reward = (10 + (RandomNumber.nextInt() % 5) ) * Level; // (10 to 14) * level
+            Reward = (10 + (Math.abs(RandomNumber.nextInt()) % 5) ) * Level; // (10 to 14) * level
 
             Ability.AutoClickLoadRate = 0;
             Ability.DamagePerClick = 0;
@@ -66,7 +66,7 @@ public class ObstacleClass {
             Name = "Door";
             Image = "door_idle";
 
-            MaxHealth = (6 + (RandomNumber.nextInt() % 5) ) * Level; // (6 to 10) * level
+            MaxHealth = (6 + (Math.abs(RandomNumber.nextInt()) % 5) ) * Level; // (6 to 10) * level
 
             Armour = 0;
             Reward = 0;
@@ -85,7 +85,7 @@ public class ObstacleClass {
             MaxHealth = 1;
 
             Armour = 0;
-            Reward = (1 + (RandomNumber.nextInt() % 5) ) * Level; // (1 to 6) * level
+            Reward = (1 + (Math.abs(RandomNumber.nextInt()) % 5) ) * Level; // (1 to 6) * level
 
             Ability.Type = "A";
             Ability.DamagePerClick = 0;
@@ -98,16 +98,16 @@ public class ObstacleClass {
             Name = "Enemy";
             Image = "enemy_idle";
 
-            MaxHealth = (6 + (RandomNumber.nextInt() % 5)) * Level; // (6 to 10) * level
+            MaxHealth = (6 + (Math.abs(RandomNumber.nextInt()) % 5)) * Level; // (6 to 10) * level
 
-            Armour = RandomNumber.nextInt() % Level; // (0 to level)
-            Reward = (1 + (RandomNumber.nextInt() % 5)) * Level; // (1 to 5) * level
+            Armour = Math.abs(RandomNumber.nextInt()) % Level; // (0 to level)
+            Reward = (1 + (Math.abs(RandomNumber.nextInt()) % 5)) * Level; // (1 to 5) * level
 
             Ability.Level = DesiredLevel;
             Ability.Type = "A";
-            Ability.ClicksPerClip = (int)ceil(1.0 + ((float)Level / (1 + (RandomNumber.nextInt() % Level))));
-            Ability.DamagePerClick = (int)floor((float)(Level / (1 + (RandomNumber.nextInt() % Level))));
-            Ability.ClickAmount = RandomNumber.nextInt() % Ability.ClicksPerClip; // Random amount of readiness
+            Ability.ClicksPerClip = (int)ceil(1.0 + ((float)Level / (1 + (Math.abs(RandomNumber.nextInt()) % Level))));
+            Ability.DamagePerClick = (int)floor((float)(Level / (1 + (Math.abs(RandomNumber.nextInt()) % Level))));
+            Ability.ClickAmount = Math.abs(RandomNumber.nextInt()) % (Ability.ClicksPerClip - 1); // Random amount of readiness
             Ability.StunDuration = 0;
             Ability.AutoClickLoadRate = 1;
 
@@ -190,20 +190,19 @@ public class ObstacleClass {
         // Returns a string of the health ratio
 
         // Deal with stun logic
-        System.out.println("Obstacle stunned for " + Data.Stun);
         if (StunDuration < Data.Stun) {
             StunDuration = Data.Stun;
         }
-        System.out.println("Obstacle stunned for " + Data.Stun + " to " + StunDuration);
+        System.out.println("ObstacleClass TakeDamage stunned for " + Data.Stun + " to " + StunDuration);
 
         // Deal with damage logic
-        System.out.println("Obstacle taking damage of " + Data.Damage + " from " + CurrentHealth + " to " + (CurrentHealth - Data.Damage));
+        System.out.println("ObstacleClass TakeDamage taking damage of " + Data.Damage + " from " + CurrentHealth + " to " + (CurrentHealth - Data.Damage));
         CurrentHealth -= Data.Damage;
         if (CurrentHealth < 0) {
             CurrentHealth = 0;
         }
         String Ratio = GetRatio();
-        System.out.println("Obstacle health is " + Ratio);
+        System.out.println("ObstacleClass TakeDamage health is " + Ratio);
 
         return Ratio;
     }

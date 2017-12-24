@@ -176,9 +176,8 @@ public class GameController {
 
         // Obstacle attack logic
         // If obstacle is stunned or not an enemy, it can't attack
-        // TODO Obstacle doesn't attack player. Fix.
         Obstacle.DecreaseStun(1);
-        if (!Obstacle.IsStunned() && Obstacle.GetName().equals("enemy")) {
+        if (!Obstacle.IsStunned() && Obstacle.GetName().equals("Enemy")) {
             System.out.println("Enemy is not stunned");
 
             // Fetch obstacle weapon ratio
@@ -206,7 +205,7 @@ public class GameController {
         }
 
         // If obstacle is an enemy, select it's image
-        if (Obstacle.GetName().equals("enemy")) {
+        if (Obstacle.GetName().equals("Enemy")) {
             // If obstacle will be stunned during next turn, set image to stunned
             // If obstacle is 1 auto-click away ie. will fire next turn, set image to attack
             // If obstacle is 2 auto-clicks away, set image to pre-attack
