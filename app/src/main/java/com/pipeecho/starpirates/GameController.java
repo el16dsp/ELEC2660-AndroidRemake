@@ -177,6 +177,7 @@ public class GameController {
         // Obstacle attack logic
         // If obstacle is stunned or not an enemy, it can't attack
         // TODO Obstacle doesn't attack player. Fix.
+        Obstacle.DecreaseStun(1);
         if (!Obstacle.IsStunned() && Obstacle.GetName().equals("enemy")) {
             System.out.println("Enemy is not stunned");
 

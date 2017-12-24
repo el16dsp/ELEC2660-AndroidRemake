@@ -165,12 +165,23 @@ public class ObstacleClass {
     public boolean IsStunned() {
         //System.out.println("ObstacleClass IsStunned called");
         if (StunDuration > 0) {
+            System.out.println("ObstacleClass stunned at value " + StunDuration);
             System.out.println("ObstacleClass IsStunned returning value true");
             return true;
         } else {
             System.out.println("ObstacleClass IsStunned returning value false");
             return false;
         }
+    }
+
+    int DecreaseStun(int Decrement) {
+        System.out.println("ObstacleClass DecreaseStun called with value " + Decrement);
+        StunDuration -= Decrement;
+        if (StunDuration < 0) {
+            StunDuration = 0;
+        }
+        System.out.println("ObstacleClass returning new StunDuration of " + StunDuration);
+        return StunDuration;
     }
 
     public String TakeDamage(WeaponClassDataPacket Data) {
