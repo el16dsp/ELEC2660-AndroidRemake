@@ -1,5 +1,7 @@
 package com.pipeecho.starpirates;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +27,8 @@ public class MenuActivity extends AppCompatActivity {
         System.out.println("Menu view allocated");
 
         // Make array of strings
-        String[] MenuItems = new String[(3 * NumberOfClasses) + 1];
+        String[] MenuItems = new String[(3 * NumberOfClasses)
+                + 1 /* Instructions tab*/ + 1 /* Reset data */];
         System.out.println("Menu list string space allocated");
 
         // For each class in the DataModel, have a "Play as...", "Inspect 'name of button1'" and
@@ -40,6 +43,7 @@ public class MenuActivity extends AppCompatActivity {
 
         // Then have an instructions tab at the end
         MenuItems[(3 * NumberOfClasses)] = "Instructions";
+        MenuItems[(3 * NumberOfClasses) + 1] = "Reset data";
 
         // Get list view id
         ListView listView = findViewById(R.id.MenuList);
@@ -79,13 +83,42 @@ public class MenuActivity extends AppCompatActivity {
                     }
                     // End if of deciding if to play game or load instructions
                 } else {
-                    System.out.println("Inspection view selected");
-                    Intent InspectionIntent = new Intent(MenuActivity.this, InspectionActivity.class);
+                    // If (i / 3) is less than the number of classes, load the inspection view
+                    // Else, ask to reset data
+                    if ((i / 3) < NumberOfClasses) {
+                        System.out.println("Inspection view selected");
+                        Intent InspectionIntent = new Intent(MenuActivity.this, InspectionActivity.class);
 
-                    InspectionIntent.putExtra(CHAR_SELECTED, i/3);
-                    InspectionIntent.putExtra(WEAPON_SELECTED, (i%3)-1);
+                        InspectionIntent.putExtra(CHAR_SELECTED, i / 3);
+                        InspectionIntent.putExtra(WEAPON_SELECTED, (i % 3) - 1);
 
-                    MenuActivity.this.startActivity(InspectionIntent);
+                        MenuActivity.this.startActivity(InspectionIntent);
+                    } else {
+                        System.out.println("Reset data pressed");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getWindow().getContext());
+                        builder.setMessage("This will set all weapon levels to one. Are you sure you want to do this?")
+                                .setTitle("Reset data");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                System.out.println("User wants to reset data");
+                                // Reset data
+                                for (int Class = 0; Class < NumberOfClasses; Class++) {
+                                    for (int Weapon = 0; Weapon <= 1; Weapon++) {
+                                        Data.SaveData(Class, Weapon, 1, getWindow().getDecorView().getRootView());
+                                    }
+                                }
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                System.out.println("User does not want to reset data");
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
                 }
                 // End if of selecting inspection view or game
             }
