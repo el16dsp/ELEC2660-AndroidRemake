@@ -1,19 +1,14 @@
 package com.pipeecho.starpirates;
 
 import android.content.Intent;
-import android.graphics.Point;
-import android.support.annotation.Dimension;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
     int ClassSelected;

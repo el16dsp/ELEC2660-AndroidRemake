@@ -7,29 +7,30 @@
     tools:context="com.pipeecho.starpirates.ShopActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ShopButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
+        android:onClick="OnButton1Press"
         android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/ShopButton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CoinsLabel" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/ShopButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
         android:background="@drawable/button"
+        android:onClick="OnButton2Press"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/ShopButton1" />
 
     <TextView
         android:id="@+id/CoinsLabel"

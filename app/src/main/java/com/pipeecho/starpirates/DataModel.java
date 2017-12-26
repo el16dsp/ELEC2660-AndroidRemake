@@ -109,14 +109,14 @@ public class DataModel {
     }
 
     int GetWeaponCost(int Class, int Index) {
-        // Takes the desired class integer and returns the cost of the first weapon's next upgrade
+        // Takes the desired class integer and returns the cost of the weapon's next upgrade
         System.out.println("DataModel GetWeaponCost called with values " + Class + " and " + Index);
 
         // Taken from Objective-C: CostPrecise = (1.0 + 0.1 * NumberOfStatsAffectedByLevelling) *
         // powf(10.0, 1 + ((1 + 0.1 * NumberOfStatsAffectedByLevelling) * CurrentLevel)/12);
         int Level = GetWeaponLevel(Class, Index);
         double UpgradesPerLevel = PlayerClassArray[Class].GetWeaponUpgradesPerLevel(Index);
-        double CostPrecise = (1.0 + 0.1 * UpgradesPerLevel) * Math.pow(10.0, 1.0 + ((1.0 + 0.1 * UpgradesPerLevel) * Level)/12);
+        double CostPrecise = (1.0 + 0.1 * UpgradesPerLevel) * Math.pow(10.0, 1.0 + ((1.0 + 0.1 * UpgradesPerLevel) * (Level + 1))/12);
         int Cost = (int) CostPrecise;
 
         System.out.println("DataModel GetWeaponCost returning value " + Cost);

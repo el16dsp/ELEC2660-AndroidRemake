@@ -25,7 +25,7 @@
         android:onClick="onButton1Click"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Button2"
+        app:layout_constraintEnd_toStartOf="@+id/ShopButton2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -37,7 +37,7 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Button1" />
+        app:layout_constraintStart_toEndOf="@+id/ShopButton1" />
 
     <ImageButton
         android:id="@+id/ObstacleImage"
@@ -64,7 +64,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="@+id/Weapon1Label"
-        app:layout_constraintEnd_toStartOf="@+id/Button2"
+        app:layout_constraintEnd_toStartOf="@+id/ShopButton2"
         app:layout_constraintStart_toStartOf="@+id/Background"
         app:srcCompat="@drawable/cutter_idle" />
 
@@ -137,8 +137,8 @@
         android:text="Weapon1Label"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Button1"
-        app:layout_constraintEnd_toStartOf="@+id/Button2"
+        app:layout_constraintBottom_toTopOf="@+id/ShopButton1"
+        app:layout_constraintEnd_toStartOf="@+id/ShopButton2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -148,8 +148,8 @@
         android:text="Weapon2Label"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Button2"
-        app:layout_constraintEnd_toEndOf="@+id/Button2"
-        app:layout_constraintStart_toStartOf="@+id/Button2" />
+        app:layout_constraintBottom_toTopOf="@+id/ShopButton2"
+        app:layout_constraintEnd_toEndOf="@+id/ShopButton2"
+        app:layout_constraintStart_toStartOf="@+id/ShopButton2" />
 
 </android.support.constraint.ConstraintLayout>
