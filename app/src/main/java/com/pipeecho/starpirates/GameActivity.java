@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.support.annotation.Dimension;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,6 @@ public class GameActivity extends AppCompatActivity {
         Button1.setText(Game.GetButtonText(0));
         Button2.setText(Game.GetButtonText(1));
 
-        // TODO Weapon ratio colour blocks do not appear. Fix.
         // Have frame 0 data prepared
         GameClassDataPacket Data = new GameClassDataPacket();
         Data.Button1Ratio = Game.Player.Weapons[0].GetRatio();
@@ -79,10 +79,13 @@ public class GameActivity extends AppCompatActivity {
         // Update health background label
         // Get Screen width
         // Taken from https://stackoverflow.com/questions/1016896/get-screen-dimensions-in-pixels
-        Point size = new Point();
-        int ScreenWidth = size.x;
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int ScreenWidth = metrics.widthPixels;
+        System.out.println("System screen width is " + ScreenWidth);
         // Get TextView
         TextView HealthBackground = findViewById(R.id.HealthBackground);
+        //ImageView HealthBackground = findViewById(R.id.HealthBackgroundBlock);
         // Get ratio denominator
         int DenominatorHealth = Game.GetRatioDenominator(Data.HealthRatio);
         if (DenominatorHealth == 0) {
@@ -95,8 +98,10 @@ public class GameActivity extends AppCompatActivity {
         }
         // Turn ratio into floating point multiplier
         float RatioHealth = (float) NumeratorHealth / (float) DenominatorHealth;
+        System.out.println("RatioHealth is " + RatioHealth);
         // Multiply screen width by multiplier
         int NewWidthHealth = (int) (ScreenWidth * RatioHealth);
+        System.out.println("HealthLabel width is " + NewWidthHealth);
         // Set TextView width as new value
         HealthBackground.setWidth(NewWidthHealth);
         // If ratio is less than a constant, colour is red
@@ -128,22 +133,22 @@ public class GameActivity extends AppCompatActivity {
             DenominatorButton1 = 1;
         }
         // Get ratio numerator
-        int NumeratorButton1 = Game.GetRatioNumerator(Data.HealthRatio);
+        int NumeratorButton1 = Game.GetRatioNumerator(Data.Button1Ratio);
         if (NumeratorButton1 == 0) {
             NumeratorButton1 = 1;
         }
         // Turn ratio into floating point multiplier
         float RatioButton1 = (float) NumeratorButton1 / (float) DenominatorButton1;
+        System.out.println("Button1 ratio is " + RatioButton1);
         // Multiply screen width by multiplier
         int NewWidthButton1 = (int) (ScreenWidth * RatioButton1 / 2);
+        System.out.println("Button1 width is " + NewWidthButton1);
         // Set TextView width as new value
         Weapon1Background.setWidth(NewWidthButton1);
         // If weapon is type 'A' and fully charged, colour is green
         if (Game.Player.Weapons[0].Type.equals("A") && (NumeratorButton1 == DenominatorButton1)) {
             Weapon1Background.setBackgroundColor(LABEL_GREEN);
-        } else {
-            Weapon1Background.setBackgroundColor(LABEL_RED);
-        }
+        } else
         // If weapon is type 'W' and has at least one in the numerator, colour is green
         if (Game.Player.Weapons[0].Type.equals("W") && (NumeratorButton1 > 0)) {
             Weapon1Background.setBackgroundColor(LABEL_GREEN);
@@ -158,27 +163,27 @@ public class GameActivity extends AppCompatActivity {
         // Update weapon 2 status background
         TextView Weapon2Background = findViewById(R.id.Weapon2Background);
         // Get ratio denominator
-        int DenominatorButton2 = Game.GetRatioDenominator(Data.Button1Ratio);
+        int DenominatorButton2 = Game.GetRatioDenominator(Data.Button2Ratio);
         if (DenominatorButton2 == 0) {
             DenominatorButton2 = 1;
         }
         // Get ratio numerator
-        int NumeratorButton2 = Game.GetRatioNumerator(Data.HealthRatio);
+        int NumeratorButton2 = Game.GetRatioNumerator(Data.Button2Ratio);
         if (NumeratorButton2 == 0) {
             NumeratorButton2 = 1;
         }
         // Turn ratio into floating point multiplier
         float RatioButton2 = (float) NumeratorButton2 / (float) DenominatorButton2;
+        System.out.println("Button2 ratio is " + RatioButton2);
         // Multiply screen width by multiplier
         int NewWidthButton2 = (int) (ScreenWidth * RatioButton2 / 2);
+        System.out.println("Button2 width is " + NewWidthButton2);
         // Set TextView width as new value
         Weapon2Background.setWidth(NewWidthButton2);
         // If weapon is type 'A' and fully charged, colour is green
         if (Game.Player.Weapons[1].Type.equals("A") && (NumeratorButton2 == DenominatorButton2)) {
             Weapon2Background.setBackgroundColor(LABEL_GREEN);
-        } else {
-            Weapon2Background.setBackgroundColor(LABEL_RED);
-        }
+        } else // else statement continued
         // If weapon is type 'W' and has at least one in the numerator, colour is green
         if (Game.Player.Weapons[1].Type.equals("W") && (NumeratorButton2 > 0)) {
             Weapon2Background.setBackgroundColor(LABEL_GREEN);
