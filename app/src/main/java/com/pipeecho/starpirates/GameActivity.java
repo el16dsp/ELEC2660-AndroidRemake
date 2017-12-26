@@ -19,8 +19,8 @@ public class GameActivity extends AppCompatActivity {
     int ClassSelected;
     GameController Game;
     double HEALTH_COLOUR_CHANGE_LIMIT = 0.4;
-    int LABEL_GREEN = 0xff88aa00;
-    int LABEL_RED = 0xffcc0000;
+    public static int LABEL_GREEN = 0xff88aa00;
+    public static int LABEL_RED = 0xffcc0000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
