@@ -25,7 +25,7 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ClassSelected = intent.getIntExtra(MenuActivity.CHAR_SELECTED, 0);
 
-        Game = new GameController(ClassSelected);
+        Game = new GameController(ClassSelected, getWindow().getDecorView().getRootView());
 
         // Set button text to be that of the weapons.
         Button Button1 = findViewById(R.id.ShopButton1);

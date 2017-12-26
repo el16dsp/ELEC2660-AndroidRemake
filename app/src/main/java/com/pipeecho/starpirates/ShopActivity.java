@@ -27,6 +27,7 @@ public class ShopActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         Data = new DataModel();
+        Data.LoadData(getWindow().getDecorView().getRootView());
 
         ClassSelected = intent.getIntExtra(MenuActivity.CHAR_SELECTED, 0);
         Coins = intent.getIntExtra(MenuActivity.COINS_SAVED, 0);

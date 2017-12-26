@@ -1,6 +1,7 @@
 package com.pipeecho.starpirates;
 
 import android.content.Intent;
+import android.view.View;
 
 import java.util.Random;
 
@@ -27,8 +28,9 @@ public class GameController {
     int ENCOUNTER_TOTAL_CHANCE = ENCOUNTER_ENEMY_CHANCE + ENCOUNTER_CHEST_CHANCE + ENCOUNTER_DOOR_CHANCE;
     int ENCOUNTER_LEVEL_RANGE = 3;
 
-    public GameController(int Class) {
+    public GameController(int Class, View view) {
         Data = new DataModel();
+        Data.LoadData(view);
         Player = Data.PlayerClassArray[Class];
         System.out.println("Loaded player class " + Player.GetName());
 
