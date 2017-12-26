@@ -26,6 +26,8 @@ public class InspectionActivity extends AppCompatActivity {
         int StunDuration;
         int AutoClickRate;
 
+        Data.LoadData(getWindow().getDecorView().getRootView());
+
         // Get the intent that started the activity
         Intent intent = getIntent();
         // Extract char selected

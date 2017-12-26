@@ -33,12 +33,13 @@ public class DataModel {
     public void LoadData(View view) {
         // Will load data and return values into the string StoredData
 
-        // TODO Load file and modify stuff
         SharedPreferences file = view.getContext().getSharedPreferences(SAVE_NAME, 0);
         for (int Class = 0; Class < NUMBER_OF_CLASSES; Class++) {
             for (int WeaponIndex = 0; WeaponIndex <= 1; WeaponIndex++) {
                 String key = String.format("%d_%d", Class, WeaponIndex);
-                PlayerClassArray[Class].Weapons[WeaponIndex].Level = file.getInt(key, 1);
+                int Level = file.getInt(key, 1);
+                PlayerClassArray[Class].Weapons[WeaponIndex].Level = Level;
+                PlayerClassArray[Class].Weapons[WeaponIndex].UpdateStats(Level);
             }
         }
     }
