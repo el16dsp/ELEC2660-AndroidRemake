@@ -48,31 +48,34 @@ public class ShopActivity extends AppCompatActivity {
     public void OnButton1Press(View view) {
         System.out.println("Button 1 pressed");
 
-        BuyItem(0);
+        BuyItem(0, view);
     }
 
     public void OnButton2Press(View view) {
         System.out.println("Button 2 pressed");
 
-        BuyItem(1);
+        BuyItem(1, view);
     }
 
-    void BuyItem(int ButtonIndex) {
+    void BuyItem(int ButtonIndex, View view) {
         System.out.println("Buy item called for index " + ButtonIndex);
 
         int NextCost = Data.GetWeaponCost(ClassSelected, ButtonIndex);
         int NextLevel = Data.GetWeaponLevel(ClassSelected, ButtonIndex) + 1;
 
         if (Coins >= NextCost) {
-            System.out.println("Buying item...");
+            System.out.println("Buying level " + NextLevel + " item...");
             // Remove coins
             Coins -= NextCost;
 
             // Save data with weapon at one level higher
-            Data.SaveData(ClassSelected, ButtonIndex, NextLevel);
+            Data.SaveData(ClassSelected, ButtonIndex, NextLevel, view);
 
             // Update coin label
             CoinsLabel.setText(String.format("Coins: %04d", Coins));
+
+            // Update button text
+            UpdateButtonText(ButtonIndex);
         }
     }
 

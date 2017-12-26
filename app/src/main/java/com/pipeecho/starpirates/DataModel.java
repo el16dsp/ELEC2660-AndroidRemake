@@ -1,13 +1,17 @@
 package com.pipeecho.starpirates;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.View;
+
 /**
  * Created by dspiper on 2017-12-18.
  */
 
 public class DataModel {
     PlayerClass[] PlayerClassArray;
-    String StoredData;
     int NUMBER_OF_CLASSES = 2;
+    public static final String SAVE_NAME = "level_stats";
 
     DataModel() {
         // Constructs the playerclass array and fills it with data
@@ -26,20 +30,33 @@ public class DataModel {
 
     }
 
-    public String LoadData() {
+    public void LoadData(View view) {
         // Will load data and return values into the string StoredData
-        StoredData = "";
 
         // TODO Load file and modify stuff
-
-        return StoredData;
+        SharedPreferences file = view.getContext().getSharedPreferences(SAVE_NAME, 0);
+        for (int Class = 0; Class < NUMBER_OF_CLASSES; Class++) {
+            for (int WeaponIndex = 0; WeaponIndex <= 1; WeaponIndex++) {
+                String key = String.format("%d_%d", Class, WeaponIndex);
+                PlayerClassArray[Class].Weapons[WeaponIndex].Level = file.getInt(key, 1);
+            }
+        }
     }
 
-    public void SaveData(int Class, int WeaponOffset, int NewLevel) {
-        // Will take the integer inputs of class and weaponoffset to pick the right spot to save
+    public void SaveData(int Class, int WeaponOffset, int NewLevel, View view) {
+        // Will take the integer inputs of class and weapon offset to pick the right spot to save
         // the new level in
 
-        // TODO Save data
+        SharedPreferences file = view.getContext().getSharedPreferences(SAVE_NAME, 0);
+        SharedPreferences.Editor file_editor = file.edit();
+
+        String key = String.format("%d_%d", Class, WeaponOffset);
+
+        file_editor.putInt(key, NewLevel);
+
+        file_editor.commit();
+
+        PlayerClassArray[Class].Weapons[WeaponOffset].Level = NewLevel;
     }
 
     String GetClassName(int Class) {
