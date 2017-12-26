@@ -24,8 +24,6 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-        // TODO Build shop
-
         Intent intent = getIntent();
 
         Data = new DataModel();
@@ -49,10 +47,33 @@ public class ShopActivity extends AppCompatActivity {
 
     public void OnButton1Press(View view) {
         System.out.println("Button 1 pressed");
+
+        BuyItem(0);
     }
 
     public void OnButton2Press(View view) {
         System.out.println("Button 2 pressed");
+
+        BuyItem(1);
+    }
+
+    void BuyItem(int ButtonIndex) {
+        System.out.println("Buy item called for index " + ButtonIndex);
+
+        int NextCost = Data.GetWeaponCost(ClassSelected, ButtonIndex);
+        int NextLevel = Data.GetWeaponLevel(ClassSelected, ButtonIndex) + 1;
+
+        if (Coins >= NextCost) {
+            System.out.println("Buying item...");
+            // Remove coins
+            Coins -= NextCost;
+
+            // Save data with weapon at one level higher
+            Data.SaveData(ClassSelected, ButtonIndex, NextLevel);
+
+            // Update coin label
+            CoinsLabel.setText(String.format("Coins: %04d", Coins));
+        }
     }
 
     void UpdateButtonText(int ButtonIndex) {
@@ -64,15 +85,15 @@ public class ShopActivity extends AppCompatActivity {
         int NextWeaponLevel = CurrentWeaponLevel + 1;
         int NextCost = Data.GetWeaponCost(ClassSelected, ButtonIndex);
 
-        System.out.println(String.format("Upgrade %s to level %d for %d coins",
-                WeaponName, NextWeaponLevel, NextCost));
+        String Text = String.format("Upgrade %s to level %d\nfor %d coins",
+                WeaponName, NextWeaponLevel, NextCost);
+
+        System.out.println(Text);
 
         if (ButtonIndex == 0) {
-            Button1.setText(String.format("Upgrade %s to level %d for %d coins",
-                    WeaponName, NextWeaponLevel, NextCost));
+            Button1.setText(Text);
         } else if (ButtonIndex == 1) {
-            Button2.setText(String.format("Upgrade %s to level %d for %d coins",
-                    WeaponName, NextWeaponLevel, NextCost));
+            Button2.setText(Text);
         }
     }
 }
