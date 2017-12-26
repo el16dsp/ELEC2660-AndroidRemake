@@ -12,6 +12,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public static final String CHAR_SELECTED = "com.pipeecho.StarPirates.CHAR_SELECTED";
     public static final String WEAPON_SELECTED = "com.pipeecho.StarPirates.WEAPON_SELECTED";
+    public static final String COINS_SAVED = "com.pipeecho.StarPirates.COINS_SAVED";
 
     DataModel Data = new DataModel();
     int NumberOfClasses = Data.NUMBER_OF_CLASSES;

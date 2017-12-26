@@ -1,5 +1,7 @@
 package com.pipeecho.starpirates;
 
+import android.content.Intent;
+
 import java.util.Random;
 
 /**
@@ -318,7 +320,6 @@ public class GameController {
         if (Player.CurrentHealth <= 0) {
             System.out.println("Player is dead");
             // Open up the shop
-            // TODO Make shop and intent to it
 
         } else {
             Data.HealthRatio = Player.ReturnHealthRatio();

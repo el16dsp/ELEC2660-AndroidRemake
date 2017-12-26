@@ -94,6 +94,15 @@ public class GameActivity extends AppCompatActivity {
         // Get ratio numerator
         int NumeratorHealth = Game.GetRatioNumerator(Data.HealthRatio);
         if (NumeratorHealth == 0) {
+            System.out.println("Received info that player is dead");
+
+            Intent ShopIntent = new Intent(this, ShopActivity.class);
+
+            ShopIntent.putExtra(MenuActivity.CHAR_SELECTED, ClassSelected);
+            ShopIntent.putExtra(MenuActivity.COINS_SAVED, Data.Coins);
+
+            startActivity(ShopIntent);
+
             NumeratorHealth = 1;
         }
         // Turn ratio into floating point multiplier
