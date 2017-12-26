@@ -16,8 +16,8 @@
         android:onClick="OnButton1Press"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/ShopButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ShopButton2"
+        app:layout_constraintStart_toStartOf="@+id/ShopButton2"
         app:layout_constraintTop_toBottomOf="@+id/CoinsLabel" />
 
     <Button

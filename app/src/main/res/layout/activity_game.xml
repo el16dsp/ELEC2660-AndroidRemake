@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/background_dark" />
 
     <Button
-        android:id="@+id/Button1"
+        android:id="@+id/ShopButton1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Button2"
+        android:id="@+id/ShopButton2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"

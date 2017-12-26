@@ -28,8 +28,8 @@ public class GameActivity extends AppCompatActivity {
         Game = new GameController(ClassSelected);
 
         // Set button text to be that of the weapons.
-        Button Button1 = findViewById(R.id.Button1);
-        Button Button2 = findViewById(R.id.Button2);
+        Button Button1 = findViewById(R.id.ShopButton1);
+        Button Button2 = findViewById(R.id.ShopButton2);
         Button1.setText(Game.GetButtonText(0));
         Button2.setText(Game.GetButtonText(1));
 
